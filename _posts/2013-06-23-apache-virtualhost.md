@@ -5,6 +5,8 @@ tags: apache
 category: wamp
 ---
 
+{% include JB/setup %}
+
 ## 1. 配置apache的配置文件httpd.conf
 
 
