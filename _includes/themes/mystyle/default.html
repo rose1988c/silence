@@ -5,7 +5,7 @@
     <meta name="author" content="{{ site.author.name }}" />
     <title>{{ page.title }} | {{ site.author.name }}</title>
     <link rel="shortcut icon" href="{{BASE_PATH}}/favicon.ico">
-    <link href="/feed/" rel="alternate" title="{{ site.author.name }}" type="application/atom+xml" />
+    <link href="{{BASE_PATH}}/feed/" rel="alternate" title="{{ site.author.name }}" type="application/atom+xml" />
 
     <link href="{{ ASSET_PATH }}/bootstrap/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link href="{{ ASSET_PATH }}/bootstrap/css/highlight.css" rel="stylesheet" type="text/css" media="all">
@@ -19,7 +19,7 @@
         <h1>{{ page.title }}</h1>
         </header>
         <nav>
-        <span><a title="home page" class="" href="{{ ASSET_PATH }}">Home</a></span>
+        <span><a title="home page" class="" href="{{ BASE_PATH }}">Home</a></span>
         <span><a title="about" class="" href="{{BASE_PATH}}/about">About</a></span>
         <span><a title="guestbook" class="" href="{{BASE_PATH}}/guestbook">Guestbook</a></span>
         <span><a title="categories" class="" href="{{BASE_PATH}}/categories">Categories</a></span>

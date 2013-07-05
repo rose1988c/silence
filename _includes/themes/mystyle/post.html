@@ -14,7 +14,7 @@
 <span class="categories">
   in categories
   {% for cat in page.categories %}
-  <a href="/categories#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
+  <a href="{{ site.production_url }}/categories#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
   {% endfor %}
 </span>
 {% endif %}
@@ -22,7 +22,7 @@
 <span class="tags">
   tagged with 
   {% for tag in page.tags %}
-  <a href="/tags#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
+  <a href="{{ site.production_url }}/tags#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
   {% endfor %}
 </span>
 {% endif %}
@@ -32,13 +32,13 @@
 <div class="post_pagination">
   <ul>
   {% if page.previous %}
-    <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+    <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; 前页</a></li>
   {% else %}
     <li class="prev disabled"><a>&larr; 前页</a></li>
   {% endif %}
    
   {% if page.next %}
-    <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+    <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">后页 &rarr;</a></li>
   {% else %}
     <li class="next disabled"><a>后页 &rarr;</a>
   {% endif %}
