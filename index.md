@@ -16,7 +16,7 @@ tagline: insky
   {% endif %}
   <li class="listing-item">
     <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    <a href="{{ BASE_PATH }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}8uj</a>
+    <a href="{{ BASE_PATH }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
   </li>
 {% endfor %}
 </ul>
