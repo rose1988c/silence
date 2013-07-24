@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 微信平台接口开发
 date: 2013-04-26 18:04:14
 tags: weixin
