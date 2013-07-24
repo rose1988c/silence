@@ -6,7 +6,6 @@ tags : [JavaScript]
 comments : false
 date: 2013-01-10 17:41:48
 ---
-
 {% include JB/setup %}
 
 复制/粘帖/不能选择/不能使用右键菜单
