@@ -1,3 +1,5 @@
+---
+layout: post
 title: Firefox 插件
 date: 2013-02-05 11:36:47
 tags: Firefox

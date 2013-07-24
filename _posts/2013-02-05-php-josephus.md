@@ -1,3 +1,5 @@
+---
+layout: post
 title: PHP - 约瑟夫环
 date: 2013-02-04 14:54:35
 tags: PHP

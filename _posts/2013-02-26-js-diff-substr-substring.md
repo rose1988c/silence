@@ -1,3 +1,5 @@
+---
+layout: post
 title: js中substring and slice和substr的用法区别
 date: 2013-02-26 17:18:52
 tags: JavaScript

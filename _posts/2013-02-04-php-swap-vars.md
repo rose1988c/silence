@@ -1,3 +1,5 @@
+---
+layout: post
 title: PHP中不使用临时变量来交换两个数值变量？
 date: 2013-02-04 14:20:07
 tags: PHP
