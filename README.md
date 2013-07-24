@@ -1,3 +1,0 @@
-# It's ROSE1988'C BLOG
-
-
