@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="陈韵文" />
+    <title>配置Sublime Text使用Markdown，语法高亮,生成HTML | 陈韵文</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="陈韵文" type="application/atom+xml" />
+
+    <link href="/assets/themes/mystyle/bootstrap/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/mystyle/bootstrap/css/highlight.css" rel="stylesheet" type="text/css" media="all">
+    <script type="text/javascript" src="/assets/themes/mystyle/bootstrap/js/jquery-1.7.1.min.js"></script>
+  
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>配置Sublime Text使用Markdown，语法高亮,生成HTML</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="">Home</a></span>
+        <span><a title="about" class="" href="/about">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories">Categories</a></span>
+        <span><a title="tags" class="" href="/tags">Tags</a></span>
+        <span><a title="links" class="" href="/links">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/atom">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        
+<section class="post">
+<p>在知道jekyll是支持Markdown的时候，我就去学习了。 Markdown语法清晰，简介。很适合学习</p>
+
+<p><strong>了解Sublime Text和Markdown</strong></p>
+
+<p>Sublimne Text是最近一个非常火的编辑器，代码编辑器，速度非常快，功能非常强大。非常好用，而且跨Windows，Mac，Linux平台，有用Python API的插件，主题也支持，但是主题不是特别多。 Markdown是一种比较简单的标记语言，让你写文档的时候可以有结构，用纯文本编辑，可以纯文本阅读，也可以转换成HTML，让它有富文本的特性，如粗体，斜体，添加引用，图片链接。现在我主要都是用Markdown来写写笔记。</p>
+
+<p><strong>安装Sublime Text,Python,Python Markdown</strong></p>
+
+<p><a href='http://www.sublimetext.com/'>下载Sublime Text</a> Sublime Text下载后是exe程序，下一步下一步安装就好了。</p>
+
+<p><strong>安装Markdown插件</strong></p>
+
+<p>写到这里，我推荐你了解一下 <a href='http://lucifr.com/2011/08/31/sublime-text-2-tricks-and-tips/'>Sublime Text2基本使用方法</a> 有了上面的知识，我们可以安装Sublime Text的插件了。用Package Control安装Markdown Build和Markdown Preview。安装好了后按Ctrl + Shift + P，输入Markdown就可以看到一些Markdown有关的操作了。我也写了一个关于Markdown的Sublime Text 2的扩展。 Copy to Clipboard，你也可以安装试下。</p>
+
+<p><strong>配置Markdown语法高亮</strong></p>
+
+<p>区别Sublime Text的theme和color-scheme,theme是指主题，包括一些编辑器的元素，而color-scheme是指语法高亮的颜色配置。 在了解这个之后，我再次推荐你安装Sublime Text的Sublime Text 2 入门及技巧文中推荐的那个Soda主题，然后在推荐这个Made of Code这个color scheme。由于它的官网<a href='http://madeofcode.com/posts/29'>http://madeofcode.com/posts/29</a>在国内不好访问，可以在这<a href='https://github.com/kumarnitin/made-of-code-tmbundle'>下载</a>。 color scheme的安装方法，把这个文件放到主题文件夹或者直接放到Package文件夹也可以，在菜单点Preference &gt; Browse Packages,放到那个目录也可以。然后在Preference &gt; Color Scheme里面选择那个对应的就可以了。这个时候还没有高亮，按Ctrl + Shift + P，选择”Set Syntax:Markdown”</p>
+<!-- more -->
+<p><strong>修改Sublime Text新建和保存文件时的默认格式</strong></p>
+
+<p>参考 <a href='http://imwuyu.me/blog/sublime-assign-default-file-type-and-ext.html/'>这篇文章</a></p>
+
+<p><strong>生成HTML</strong></p>
+
+<p>直接在菜单的Tools - Build就可以生成HTML，快捷键Ctrl+B，生成后会用默认的浏览器打开。如果你按Ctrl + Shift + P用Markdown Preview这个扩展生成也可以，但是代码没有Markdown的代码好。</p>
+
+<p><strong>其他</strong></p>
+
+<p>快捷键快速跳转文件的部分 Ctrl + R</p>
+
+<p>可以把文件直接保存到Dropbox里面备份，或者有服务直接把Dropbox里面的Markdown文件转换成博客文章。</p>
+
+<h3 id='links'>Links</h3>
+
+<ul>
+<li><a href='http://wowubuntu.com/markdown'>Markdown 语法说明</a></li>
+
+<li><a href='http://timewilltell.me/node/15'>配置Sublime Text2使用Markdown，语法高亮,生成HTML</a></li>
+</ul>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://www.atchen.com/silence/">陈韵文</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2013-01-10">2013-01-10</time>
+</span>
+<br />
+
+<span class="categories">
+  in categories
+  
+  <a href="http://www.atchen.com/silence//categories#sublime" title="sublime">sublime</a>&nbsp;
+  
+  <a href="http://www.atchen.com/silence//categories#text" title="text">text</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://www.atchen.com/silence//tags#Markdown,Sublime Text" title="Markdown,Sublime Text">Markdown,Sublime Text</a>&nbsp;
+  
+</span>
+
+</section>
+
+<hr>
+<div class="post_pagination">
+  <ul>
+  
+    <li class="prev"><a href="/silence/2013/01/10/copy-better" title="解除网页限制">前页</a></li>
+  
+   
+  
+    <li class="next"><a href="/silence/2013/01/11/github" title="GigHub 安装与使用">后页</a></li>
+  
+  </ul>
+</div>
+<hr>
+
+
+
+  <!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"silence"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = '/silence/2013/01/10/copy-better';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = '/silence/2013/01/11/github';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2013-2013 by <a href="http://rose1988c.github.com/about">Rose1988c</a> | <span class="label label-info">2013-11-20 16:29:08 CST</span></small></p>
+    </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

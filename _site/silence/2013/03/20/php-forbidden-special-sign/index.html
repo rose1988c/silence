@@ -1,0 +1,289 @@
+<p>title: PHP 屏蔽特殊符号 date: 2013-03-20 11:50:02 tags: PHP</p>
+
+<h2 id='categories_php'>categories: PHP</h2>
+
+<p>用户注册用户名的时候往往会带有一些特殊符号，因为特殊要求，需要对特殊符号和屏蔽字进行处理。</p>
+
+<p>网上说的方案都以正则为基础，进行匹配过滤。都不太适用。</p>
+<!-- more -->
+<pre><code>&lt;?php
+
+class Blacklist {
+
+    //保留的
+    private static $keywords_reserved = array (&#39;官方&#39;, &#39;内幕消息&#39;, &#39;管理员&#39;, &#39;版主&#39;, &#39;客服&#39;,);
+    
+    //保留的追加
+    private static $keywords_reserved_exact = array (&#39;mem&#39;,&#39;vip&#39;,&#39;account&#39;, &#39;admin&#39;);
+
+    //严格
+    public static $keywords_strict = array (&#39;时代论坛&#39;);
+
+    //丢失
+    private static $keywords_loose = array ();
+
+    //屏蔽
+    private static $keywords_forbidden = array(&#39;爱梦&#39;);
+    
+    /*
+        是否有关键词
+     */
+    public static function has_blackword($content) {
+        if (self::has_blackword_strict ( $content ))
+            return true;
+        if (self::has_blackword_loose ( $content ))
+            return true;
+        return false;
+    }
+    
+    public static function has_blackword_strict($content) {
+        foreach ( self::$keywords_strict as $blackword ) {
+            if (strpos ( $content, $blackword ) !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /*
+        是否有屏蔽的关键词
+     */
+    public static function has_forbiddenword($content) {
+        global $auth;
+        if (is_object($auth) &amp;&amp; $auth-&gt;is_logged_in() &amp;&amp; $auth-&gt;id == 7878) {
+            return false;
+        }
+        if (self::has_forbiddenword_loose($content))
+            return true;
+        return false;
+    }
+    
+    public static function has_forbiddenword_loose($content) {
+        $pure_content = self::get_purewords($content);
+        
+        if (preg_match(&#39;/q[0-9]{10,}/i&#39;, $pure_content)) {
+            return true;
+        }
+        if (/*strpos($content, &#39;电话&#39;) ||  */strpos($content, &#39;来电&#39;) || strpos($content, &#39;号码&#39;) 
+         || strpos($content, &#39;致电&#39;) || strpos($content, &#39;热线&#39;) 
+         /*|| stripos($content, &#39;tel&#39;)*/) {
+            if (preg_match(&#39;/[0-9]{10,11}/i&#39;, $pure_content)) {
+                return true;
+            }
+        }
+    
+        //do somethings
+        
+        return false;
+    }
+    
+    public static function has_blackword_loose($content) {
+        foreach ( self::$keywords_loose as $blackword ) {
+            if (strpos ( $content, $blackword ) !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static function has_reserved_word($content) {
+        $content = trim ( $content );
+        foreach ( self::$keywords_reserved as $word ) {
+            if (stripos ( $content, $word ) !== false) {
+                return true;
+            }
+        }
+        foreach ( self::$keywords_reserved_exact as $word ) {
+            if ($content == $word)
+                return true;
+        }
+        return false;
+    }
+    
+    public static function replace_blackwords_strict($content, $replace = &#39;*&#39;) {
+        $content = str_replace ( self::$keywords_strict, $replace, $content );
+        return $content;
+    }
+    
+    public static function replace_blackwords_loose($content, $replace = &#39;*&#39;) {
+        $content = str_replace ( self::$keywords_loose, $replace, $content );
+        return $content;
+    }
+    
+    private static $marks = array(&#39;&lt;br&gt;&#39;,&#39;&amp;nbsp;&#39;,&#39; &#39;,&#39;-&#39;,&#39;－&#39;, &#39;.&#39;, &#39;。&#39;,&#39;×&#39;,&#39;┆&#39;,
+                                &#39;,&#39;,&#39;，&#39;,&#39;●&#39;,&#39;○&#39; ,&#39;:&#39;,&#39;◆&#39;,&#39;━&#39;,&#39;*&#39;,&#39;、&#39;,&#39;※&#39;,&#39;Ж&#39;,
+                                &#39;★&#39;,&#39;☆&#39;,&#39;卐&#39;,&#39;┼&#39;,&#39;〓&#39;,&#39;【&#39;,&#39;】&#39;,&#39;[&#39;,&#39;]&#39;,&#39;█&#39;,&#39;▂&#39;,
+                                &#39;&amp;&#39;,&#39;%&#39;,&#39;　&#39;,&#39;!&#39;,&#39;~&#39;,&#39;：&#39;,&#39;▓&#39;,&#39;…&#39;,&#39;┠&#39;,&#39;┨&#39;,&#39;◢&#39;,
+                                &#39;|&#39;,&#39;？&#39;,&#39;◣&#39;,&#39;；&#39;,&#39;(&#39;,&#39;)&#39;,&#39;（&#39;,&#39;）&#39;,&#39;《&#39;,&#39;》&#39;,&#39;╮&#39;,
+                                &#39;╰&#39;,&#39;！&#39;,&#39;“&#39;,&#39;”&#39;,&#39;=&#39;,&#39;∏&#39;,&#39;＠&#39;,&#39;@&#39;,&#39;┗&#39;,&#39;┛&#39;,&#39;√&#39;,
+                                &#39;‖&#39;,&#39;+&#39;,&#39;{&#39;,&#39;≯&#39;,&#39;/&#39;,&#39;╉&#39;,&#39;_&#39;,&#39;→&#39;,&#39;〖&#39;,&#39;べ&#39;,&#39;〗&#39;);
+    private static $SBCcase = array(&#39;０&#39; =&gt; 0,
+                                    &#39;零&#39; =&gt; 0,
+                                    &#39;１&#39; =&gt; 1,
+                                    &#39;①&#39; =&gt; 1,
+                                    &#39;壹&#39; =&gt; 1,
+                                    &#39;一&#39; =&gt; 1,
+                                    &#39;㈠&#39; =&gt; 1,
+                                    &#39;⒈&#39; =&gt; 1,
+                                    &#39;⑴&#39; =&gt; 1,
+                                    &#39;２&#39; =&gt; 2,
+                                    &#39;②&#39; =&gt; 2,
+                                    &#39;二&#39; =&gt; 2, 
+                                    &#39;贰&#39; =&gt; 2, 
+                                    &#39;⑵&#39; =&gt; 2,
+                                    &#39;㈡&#39; =&gt; 2,
+                                    &#39;⒉&#39; =&gt; 2,
+                                    &#39;３&#39; =&gt; 3,
+                                    &#39;③&#39; =&gt; 3,
+                                    &#39;三&#39; =&gt; 3,
+                                    &#39;㈢&#39; =&gt; 3,
+                                    &#39;⑶&#39; =&gt; 3,
+                                    &#39;⒊&#39; =&gt; 3,
+                                    &#39;叁&#39; =&gt; 3,
+                                    &#39;４&#39; =&gt; 4, 
+                                    &#39;④&#39; =&gt; 4, 
+                                    &#39;四&#39; =&gt; 4, 
+                                    &#39;㈣&#39; =&gt; 4, 
+                                    &#39;⑷&#39; =&gt; 4, 
+                                    &#39;⒋&#39; =&gt; 4, 
+                                    &#39;肆&#39; =&gt; 4, 
+                                    &#39;５&#39; =&gt; 5,
+                                    &#39;㈤&#39; =&gt; 5,
+                                    &#39;㈤&#39; =&gt; 5,
+                                    &#39;⑸&#39; =&gt; 5,
+                                    &#39;⒌&#39; =&gt; 5,
+                                    &#39;⑤&#39; =&gt; 5,
+                                    &#39;五&#39; =&gt; 5,
+                                    &#39;伍&#39; =&gt; 5,
+                                    &#39;６&#39; =&gt; 6,
+                                    &#39;⒍&#39; =&gt; 6,
+                                    &#39;⑹&#39; =&gt; 6,
+                                    &#39;㈥&#39; =&gt; 6,
+                                    &#39;⑥&#39; =&gt; 6,
+                                    &#39;六&#39; =&gt; 6,
+                                    &#39;陸&#39; =&gt; 6,
+                                    &#39;７&#39; =&gt; 7,
+                                    &#39;㈦&#39; =&gt; 7,
+                                    &#39;㈦&#39; =&gt; 7,
+                                    &#39;⑺&#39; =&gt; 7,
+                                    &#39;⒎&#39; =&gt; 7,
+                                    &#39;⑦&#39; =&gt; 7,
+                                    &#39;七&#39; =&gt; 7,
+                                    &#39;柒&#39; =&gt; 7,
+                                    &#39;８&#39; =&gt; 8,
+                                    &#39;㈧&#39; =&gt; 8,
+                                    &#39;⑻&#39; =&gt; 8,
+                                    &#39;⒏&#39; =&gt; 8,
+                                    &#39;⑧&#39; =&gt; 8,
+                                    &#39;八&#39; =&gt; 8,
+                                    &#39;捌&#39; =&gt; 8,
+                                    &#39;９&#39; =&gt; 9,
+                                    &#39;㈨&#39; =&gt; 9,
+                                    &#39;⑼&#39; =&gt; 9,
+                                    &#39;⑼&#39; =&gt; 9,
+                                    &#39;⒐&#39; =&gt; 9,
+                                    &#39;⑨&#39; =&gt; 9,
+                                    &#39;九&#39; =&gt; 9,
+                                    &#39;玖&#39; =&gt; 9,
+                                    &#39;⑩&#39; =&gt; 10,
+                                    &#39;㈩&#39; =&gt; 10,
+                                    &#39;⑽&#39; =&gt; 10,
+                                    &#39;⒑&#39; =&gt; 10,
+                                    &#39;⑾&#39; =&gt; 11,
+                                    &#39;⒒&#39; =&gt; 11,
+                                    &#39;⑿&#39; =&gt; 12,
+                                    &#39;⒓&#39; =&gt; 12,
+                                    &#39;⒀&#39; =&gt; 13,
+                                    &#39;⒔&#39; =&gt; 13,
+                                    &#39;⒁&#39; =&gt; 14,
+                                    &#39;⒕&#39; =&gt; 14,
+                                    &#39;⒂&#39; =&gt; 15,
+                                    &#39;⒖&#39; =&gt; 15,
+                                    &#39;⒃&#39; =&gt; 16,
+                                    &#39;⒗&#39; =&gt; 16,
+                                    &#39;⒄&#39; =&gt; 17,
+                                    &#39;⒘&#39; =&gt; 17,
+                                    &#39;⒅&#39; =&gt; 18,
+                                    &#39;⒙&#39; =&gt; 18,
+                                    &#39;⒆&#39; =&gt; 19,
+                                    &#39;⒚&#39; =&gt; 19,
+                                    &#39;⒇&#39; =&gt; 20,
+                                    &#39;⒛&#39; =&gt; 20,
+                                    &#39;Ａ&#39; =&gt;&#39;a&#39;,
+                                    &#39;Ｂ&#39; =&gt;&#39;b&#39;,
+                                    &#39;Ｃ&#39; =&gt;&#39;c&#39;,
+                                    &#39;Ｄ&#39; =&gt;&#39;d&#39;,
+                                    &#39;Ｅ&#39; =&gt;&#39;e&#39;,
+                                    &#39;Ｆ&#39; =&gt;&#39;f&#39;,
+                                    &#39;Ｇ&#39; =&gt;&#39;g&#39;,
+                                    &#39;Ｈ&#39; =&gt;&#39;h&#39;,
+                                    &#39;Ｉ&#39; =&gt;&#39;i&#39;,
+                                    &#39;Ｊ&#39; =&gt;&#39;j&#39;,
+                                    &#39;Ｋ&#39; =&gt;&#39;k&#39;,
+                                    &#39;Ｌ&#39; =&gt;&#39;l&#39;,
+                                    &#39;Ｍ&#39; =&gt;&#39;m&#39;,
+                                    &#39;Ｎ&#39; =&gt;&#39;n&#39;,
+                                    &#39;Ｏ&#39; =&gt;&#39;o&#39;,
+                                    &#39;Ｐ&#39; =&gt;&#39;p&#39;,
+                                    &#39;Ｑ&#39; =&gt;&#39;q&#39;,
+                                    &#39;Ｒ&#39; =&gt;&#39;r&#39;,
+                                    &#39;Ｓ&#39; =&gt;&#39;s&#39;,
+                                    &#39;Ｔ&#39; =&gt;&#39;t&#39;,
+                                    &#39;Ｕ&#39; =&gt;&#39;u&#39;,
+                                    &#39;Ｖ&#39; =&gt;&#39;v&#39;,
+                                    &#39;Ｗ&#39; =&gt;&#39;w&#39;,
+                                    &#39;Ｘ&#39; =&gt;&#39;x&#39;,
+                                    &#39;Ｙ&#39; =&gt;&#39;y&#39;,
+                                    &#39;Ｚ&#39; =&gt;&#39;z&#39;,
+                                    &#39;ａ&#39; =&gt;&#39;a&#39;,
+                                    &#39;ｂ&#39; =&gt;&#39;b&#39;,
+                                    &#39;ｃ&#39; =&gt;&#39;c&#39;,
+                                    &#39;ｄ&#39; =&gt;&#39;d&#39;,
+                                    &#39;ｅ&#39; =&gt;&#39;e&#39;,
+                                    &#39;ｆ&#39; =&gt;&#39;f&#39;,
+                                    &#39;ｇ&#39; =&gt;&#39;g&#39;,
+                                    &#39;ｈ&#39; =&gt;&#39;h&#39;,
+                                    &#39;ｉ&#39; =&gt;&#39;i&#39;,
+                                    &#39;ｊ&#39; =&gt;&#39;j&#39;,
+                                    &#39;ｋ&#39; =&gt;&#39;k&#39;,
+                                    &#39;ｌ&#39; =&gt;&#39;l&#39;,
+                                    &#39;ｍ&#39; =&gt;&#39;m&#39;,
+                                    &#39;ｎ&#39; =&gt;&#39;n&#39;,
+                                    &#39;ｏ&#39; =&gt;&#39;o&#39;,
+                                    &#39;ｐ&#39; =&gt;&#39;p&#39;,
+                                    &#39;ｑ&#39; =&gt;&#39;q&#39;,
+                                    &#39;ｒ&#39; =&gt;&#39;r&#39;,
+                                    &#39;ｓ&#39; =&gt;&#39;s&#39;,
+                                    &#39;ｔ&#39; =&gt;&#39;t&#39;,
+                                    &#39;ｕ&#39; =&gt;&#39;u&#39;,
+                                    &#39;ｖ&#39; =&gt;&#39;v&#39;,
+                                    &#39;ｗ&#39; =&gt;&#39;w&#39;,
+                                    &#39;ｘ&#39; =&gt;&#39;x&#39;,
+                                    &#39;ｙ&#39; =&gt;&#39;y&#39;,
+                                    &#39;ｚ&#39; =&gt;&#39;z&#39;,
+                                    &#39;℡&#39; =&gt; &#39;TEL&#39;);                                  
+    public static function get_purewords($content) {
+        $content = str_replace(self::$marks, &#39;&#39;, $content);
+        $content = strip_tags($content);
+        foreach (self::$SBCcase as $key =&gt; $value) {
+            $content = str_replace($key, $value, $content);
+        }
+        $content = preg_replace(&quot;/[^\x{4e00}-\x{9fa5}a-z0-9]/iu&quot;, &#39;&#39;, $content);
+        return $content;
+    }
+    
+    //api接口注册，替换不合法符号
+    public static function get_pure_nickname($content) {
+        $keywords = array_merge(self::$keywords_reserved, self::$keywords_reserved_exact, self::$keywords_forbidden, self::$keywords_loose, self::$keywords_strict);
+        $keywords_replace = array();
+        foreach ($keywords as $k =&gt; $v) {
+            $keywords_replace [$v] = &#39;&#39;;
+        }
+        $content = strtr($content, $keywords_replace);
+        
+        $content = self::get_purewords($content);
+        
+        return $content;
+    }
+}
+?&gt;</code></pre>

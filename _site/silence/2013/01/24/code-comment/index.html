@@ -1,0 +1,124 @@
+<p>在<a href='http://userscripts.org'>userscripts</a>看到优雅的注释后，便诞生一个念头，如何写好注释，更加符合代码的优雅，于是便有了这文章</p>
+
+<h3 id='id22'>项目注释</h3>
+
+<p>描述一个项目</p>
+
+<pre><code>// ------------------------------------------------------------------------
+// 
+// IMPORTANT NOTICE
+// The script does not and will not do automatic searches on the site it runs on, 
+// because it is very harmful to the site&#39;s performance. If you had the 
+// great idea of implementing such a feature you are STRONGLY advised not to do so.
+// OiNKPlus is not related to the supported sites in any way. Use at own risk.
+// Some functions were created by the Platypus extension.
+// The script may frequently break, therefore it will automatically check for updated 
+// versions every now and then.
+// The author does not claim the code to be elegant. 
+// Ok? Fine.
+// Suggestions, feedback and contributions welcome.
+//  </code></pre>
+<!-- more --><hr />
+<pre><code>// *** Powered by rgbcolor.js ***************************************
+/**
+* A class to parse color values
+* @author Stoyan Stefanov &lt;sstoo@gmail.com&gt;
+* @link   http://www.phpied.com/rgb-color-parser-in-javascript/
+* @license Use it if you like it
+*/</code></pre>
+<hr />
+<pre><code>/*!
+* jQuery Cookie Plugin
+* https://github.com/carhartl/jquery-cookie
+*
+* Copyright 2011, Klaus Hartl
+* Dual licensed under the MIT or GPL Version 2 licenses.
+* http://www.opensource.org/licenses/mit-license.php
+* http://www.opensource.org/licenses/GPL-2.0
+*/</code></pre>
+
+<h3 id='id23'>块描述</h3>
+
+<p>每当你设置一个新功能或区分种类时，就可以在代码开始端加入块描述的注释方法。</p>
+
+<pre><code>// ------------------------------------------------------------------------
+// Developed under Kubuntu Linux, Kate
+// ------------------------------------------------------------------------</code></pre>
+<hr />
+<pre><code>// === 設定の読み込み =================================</code></pre>
+<hr />
+<pre><code>// 2012.05.24 Auto_Domestic のバグ修正（過去の巡回しない原因はこれかも）
+//            自動内政のスキル追加（恵風・人選眼力・訓練系・修練系）
+//            市場情報をホスト名ごとに保存
+//            建設完了時間＞設定巡回時間 の時の巡回時間設定が間違ってたのを修正
+//            巡回時間にランダムで盛っていた秒を0秒～60秒から0秒～10秒に変更
+//            本拠地以外に市場があった場合に糧変換しなかったのを修正
+//            市場のある拠点が巡回対象以外でも糧変換するように修正
+//            内政スキル発動後に各処理が多分動作するように修正
+// 2012.05.25 拠点建設設定のデータがない拠点の初期データが間違っていたのを修正
+//            設定画面でNaN(Not a Number)が表示されていたのを修正
+// 2012.05.27 ビルスクの設定が反映されないのを修正</code></pre>
+<hr />
+<pre><code>/*
+  Function: send
+    Send a new message to all registered observers
+    
+  Parameters:
+    sender    - Sender object (can be null)
+    eventName - Event name (observers have to implement this method)
+    options   - Object or Hash table (for multiple options) of sending event  (default null)
+*/</code></pre>
+
+<h3 id='id24'>类/群/声明的描述</h3>
+
+<p>我们经常可以在Javascript和CSS最上面看得到此类注释，往往都是说明该代码的出处，作者，联系方式，以及大致用途。</p>
+
+<pre><code>/**
+  * @desc opens a modal window to display a message
+  * @param string $msg - the message to be displayed
+  * @return bool - success or failure
+*/</code></pre>
+
+<h3 id='id25'>单行注释</h3>
+
+<p>程序代码重点部分加入注释，多而无用。</p>
+
+<pre><code>// 色設定
+
+var COLOR_FRAME = &quot;#333333&quot;;    // 枠背景色
+var COLOR_BASE  = &quot;#654634&quot;;    // 拠点リンク色
+var COLOR_TITLE = &quot;#FFCC00&quot;;    // 各BOXタイトル背景色
+var COLOR_BACK  = &quot;#FFF2BB&quot;;    // 各BOX背景色</code></pre>
+<hr />
+<pre><code>//バグ回避 600000=5*60*1000
+// 領地画面や建築画面で停止した場合の処理
+// ５分間止まっていた場合拠点画面に移動する
+if(location.pathname == &quot;/land.php&quot; || location.pathname == &quot;/facility/facility.php&quot;) {
+    unsafeWindow.setTimeout(function(){location.href = &quot;http://&quot;+HOST+&quot;/village.php&quot;;},300000);
+}
+// =============================================================================================
+//君主プロフィール画面なら都市画面URLを取得
+if ((location.pathname == &quot;/user/&quot; || location.pathname == &quot;/user/index.php&quot;) &amp;&amp;
+    getParameter(&quot;user_id&quot;) == &quot;&quot;) {
+    getUserProf(document);
+    if ( getStayMode() ) {
+        closeIniBilderBox()
+        openIniBilderBox()
+    }
+}</code></pre>
+
+<h3 id='id26'>分割线</h3>
+
+<pre><code>//-----------------------------------TonDen---------------------------------</code></pre>
+<hr />
+<pre><code>// =========================================================================</code></pre>
+
+<h3 id='other'>other</h3>
+
+<pre><code>// TODO:  等待实现的功能
+// FIXME: 需要修正的功能
+// XXX:   需要改进的功能
+
+// Magic. Do not touch.
+
+// drunk, fix later</code></pre>

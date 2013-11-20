@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="陈韵文" />
+    <title>50 Useful CSS Snippets Every Designer Should Have | 陈韵文</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="陈韵文" type="application/atom+xml" />
+
+    <link href="/assets/themes/mystyle/bootstrap/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/mystyle/bootstrap/css/highlight.css" rel="stylesheet" type="text/css" media="all">
+    <script type="text/javascript" src="/assets/themes/mystyle/bootstrap/js/jquery-1.7.1.min.js"></script>
+  
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>50 Useful CSS Snippets Every Designer Should Have</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="">Home</a></span>
+        <span><a title="about" class="" href="/about">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories">Categories</a></span>
+        <span><a title="tags" class="" href="/tags">Tags</a></span>
+        <span><a title="links" class="" href="/links">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/atom">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        
+<section class="post">
+<p>英文原文：<a href='http://www.hongkiat.com/blog/css-snippets-for-designers/'>50 Useful CSS Snippets Every Designer Should Have</a> 转载：<a href='http://www.html5cn.org/article-5234-2.html'>每位设计师都应该拥有的50个CSS代码片段</a></p>
+
+<h2 id='1_css_'>1. CSS 重置</h2>
+
+<pre><code>html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html { height: 101%; }
+body { font-size: 62.5%; line-height: 1; font-family: Arial, Tahoma, sans-serif; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: &#39;&#39;; content: none; }
+strong { font-weight: bold; } 
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+p { font-size: 1.2em; line-height: 1.0em; color: #333; }</code></pre>
+
+<p>基本的CSS重置是网络上最常见的代码片段. 这是我自己定制的重置代码，它基于 Eric Meyer’s reset codes。里面有一些图片的设定以及为所有的核心元素定义边框, 保持适当的marings 和 padding.</p>
+
+<h2 id='2__css_clearfix'>2. 经典的 CSS Clearfix</h2>
+
+<pre><code>.clearfix:after { content: &quot;.&quot;; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }</code></pre>
+
+<p>这个clearfix代码被很多聪明的开发者用于网站. 它应用于一个用于保存浮动元素的盒子模型上. 这将确保里面的任何内容都以拉伸方式出现而不是浮动出现.</p>
+
+<h2 id='3__clearfix'>3. 更新的 Clearfix</h2>
+
+<pre><code>.clearfix:before, .container:after { content: &quot;&quot;; display: table; }
+.clearfix:after { clear: both; }
+
+/* IE 6/7 */
+.clearfix { zoom: 1; }</code></pre>
+
+<p>这里就不说这个新版本和经典版本之间的主要差差异了. 它们两个都可以有效的清除你的浮动元素, 而且都支持流行的浏览器甚至是Internet Explorer 6-8.</p>
+
+<h2 id='4_'>4. 跨浏览器的透明度</h2>
+
+<pre><code>.transparent {
+    filter: alpha(opacity=50); /* internet explorer */
+    -khtml-opacity: 0.5;      /* khtml, old safari */
+    -moz-opacity: 0.5;       /* mozilla, netscape */
+    opacity: 0.5;           /* fx, safari, opera */
+}</code></pre>
+
+<p><a href='http://perishablepress.com/cross-browser-transparency-via-css/'>Code Source</a></p>
+
+<p>一些新的CSS3属性我们可能认为它适用于任何地方. 实际上不行,我们还得稍微调整下,透明度就是个例子. 加上这个filter属性来保证它能在IE游览器里正常运行.</p>
+
+<h2 id='5_css_'>5. CSS 块引用模版</h2>
+
+<pre><code>blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: .5em 10px;
+    quotes: &quot;\201C&quot;&quot;\201D&quot;&quot;\2018&quot;&quot;\2019&quot;;
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: .1em;
+    margin-right: .25em;
+    vertical-align: -.4em;
+}
+blockquote p {
+    display: inline;
+}</code></pre>
+
+<p><a href='http://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/'>Code Source</a></p>
+
+<p>不是所有的人都必须在他们的网站上使用blockquotes. 但是我认为这是一个很好的元素用于分离引用或是优化博客和网页上的重复内容. 上面的代码为你的blockquotes提供一个默认样式,这样你的内容就不会看起来单调乏味.</p>
+
+<h2 id='6_'>6. 个性的圆角</h2>
+
+<pre><code>#container {
+    -webkit-border-radius: 4px 3px 6px 10px;
+    -moz-border-radius: 4px 3px 6px 10px;
+    -o-border-radius: 4px 3px 6px 10px;
+    border-radius: 4px 3px 6px 10px;
+}
+
+/* alternative syntax broken into each line */
+#container {
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 6px;
+    -webkit-border-bottom-left-radius: 10px;
+    
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 6px;
+    -moz-border-radius-bottomleft: 10px;
+}</code></pre>
+
+<p>大多数开发者都熟悉CSS3的圆角属性. 但是你知道如何为每个角设定不同的值吗? 上面的代码帮你搞定这个问题! 上面的两个版本都为你实现了这个效果,仔细研究下吧.</p>
+
+<h2 id='7'>7.一般媒体查询</h2>
+
+<pre><code>/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) and (max-device-width : 480px) {
+  /* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+  /* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+  /* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  /* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  /* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+  /* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+  /* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio:1.5), only screen and (min-device-pixel-ratio:1.5) {
+  /* Styles */
+}</code></pre>
+
+<p><a href='http://css-tricks.com/snippets/css/media-queries-for-standard-devices/'>Code Source</a></p>
+
+<p>这是一个很棒的模版，你能在CSS-Tricks找到其它零碎的媒体查询。不管怎样我已经把他们的例子全拷下来了，那里面包括了成吨的实际的移动设备。这些代码甚至能针对视网膜屏设备，使用最小设备像素比例。</p>
+
+<h2 id='8_'>8. 现代字体栈</h2>
+
+<pre><code>/* Times New Roman-based serif */
+font-family: Cambria, &quot;Hoefler Text&quot;, Utopia, &quot;Liberation Serif&quot;, &quot;Nimbus Roman No9 L Regular&quot;, Times, &quot;Times New Roman&quot;, serif;
+
+/* A modern Georgia-based serif */
+font-family: Constantia, &quot;Lucida Bright&quot;, Lucidabright, &quot;Lucida Serif&quot;, Lucida, &quot;DejaVu Serif,&quot; &quot;Bitstream Vera Serif&quot;, &quot;Liberation Serif&quot;, Georgia, serif;
+
+/*A more traditional Garamond-based serif */
+font-family: &quot;Palatino Linotype&quot;, Palatino, Palladio, &quot;URW Palladio L&quot;, &quot;Book Antiqua&quot;, Baskerville, &quot;Bookman Old Style&quot;, &quot;Bitstream Charter&quot;, &quot;Nimbus Roman No9 L&quot;, Garamond, &quot;Apple Garamond&quot;, &quot;ITC Garamond Narrow&quot;, &quot;New Century Schoolbook&quot;, &quot;Century Schoolbook&quot;, &quot;Century Schoolbook L&quot;, Georgia, serif;
+
+/*The Helvetica/Arial-based sans serif */
+font-family: Frutiger, &quot;Frutiger Linotype&quot;, Univers, Calibri, &quot;Gill Sans&quot;, &quot;Gill Sans MT&quot;, &quot;Myriad Pro&quot;, Myriad, &quot;DejaVu Sans Condensed&quot;, &quot;Liberation Sans&quot;, &quot;Nimbus Sans L&quot;, Tahoma, Geneva, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+
+/*The Verdana-based sans serif */
+font-family: Corbel, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, &quot;Lucida Sans&quot;, &quot;DejaVu Sans&quot;, &quot;Bitstream Vera Sans&quot;, &quot;Liberation Sans&quot;, Verdana, &quot;Verdana Ref&quot;, sans-serif;
+
+/*The Trebuchet-based sans serif */
+font-family: &quot;Segoe UI&quot;, Candara, &quot;Bitstream Vera Sans&quot;, &quot;DejaVu Sans&quot;, &quot;Bitstream Vera Sans&quot;, &quot;Trebuchet MS&quot;, Verdana, &quot;Verdana Ref&quot;, sans-serif;
+
+/*The heavier &quot;Impact&quot; sans serif */
+font-family: Impact, Haettenschweiler, &quot;Franklin Gothic Bold&quot;, Charcoal, &quot;Helvetica Inserat&quot;, &quot;Bitstream Vera Sans Bold&quot;, &quot;Arial Black&quot;, sans-serif;
+
+/*The monospace */
+font-family: Consolas, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, Monaco, &quot;Courier New&quot;, Courier, monospace;</code></pre>
+
+<p><a href='http://www.sitepoint.com/eight-definitive-font-stacks/'>Code Source</a></p>
+
+<p>你很难为设计一个新的页面头脑风暴式的想出自己的CSS字体栈。我希望这一小片代码能减轻一些折磨，并给你一些可以着手开始的模版。如果你想找更多的例子，查看一下CSS 字体栈 ，这是我最喜欢的资源之一。</p>
+
+<h2 id='9_'>9. 自定义文本选择</h2>
+
+<pre><code>::selection { background: #e2eae2; }
+::-moz-selection { background: #e2eae2; }
+::-webkit-selection { background: #e2eae2; }</code></pre>
+
+<p>一些新式的浏览器会允许你定义页面中的高亮颜色。默认这是设为淡蓝色的，但你可以设置任何投你所好的颜色值，这小片代码包括了典型的::selection目标以及专为Webkit和Mozilla的特定前缀。</p>
+
+<h2 id='10h1logo'>10.隐藏H1文本为Logo标志</h2>
+
+<pre><code>h1 {
+    text-indent: -9999px;
+    margin: 0 auto;
+    width: 320px;
+    height: 85px;
+    background: transparent url(&quot;images/logo.png&quot;) no-repeat scroll;
+}</code></pre>
+
+<p>我第一次注意到这个技术实现是在古老的Digg 布局 。为了SEO的目的，你也可以设置一个包含有你的站点名称的H1标签。但使用CSS我们能移走这个文本使它不可见，并用一个客制化的logo图片替换它。</p>
+
+<h2 id='11_polaroid'>11. polaroid图像边界</h2>
+
+<pre><code>img.polaroid {
+    background:#000; /*Change this to a background image or remove*/
+    border:solid #fff;
+    border-width:6px 6px 20px 6px;
+    box-shadow:1px 1px 5px #333; /* Standard blur at 5px. Increase for more depth */
+    -webkit-box-shadow:1px 1px 5px #333;
+    -moz-box-shadow:1px 1px 5px #333;
+    height:200px; /*Set to height of your image or desired div*/
+    width:200px; /*Set to width of your image or desired div*/
+}</code></pre>
+
+<p><a href='http://www.smipple.net/snippet/kettultim/Polaroid%20Image%20Border%20-%20CSS3'>Code Source</a></p>
+
+<p>应用这个基础的片段将使你能在你的图像上实现.polaroid 类。这将会创建老照片风格效果，带一个很宽的白边和一些淡淡的阴影。你要更新宽/高数值，以便和你的图片尺寸和网站布局相匹配。</p>
+
+<h2 id='12_'>12. 锚链接伪类</h2>
+
+<pre><code>a:link { color: blue; }
+a:visited { color: purple; }
+a:hover { color: red; }
+a:active { color: yellow; }</code></pre>
+
+<p><a href='http://www.ahrefmagazine.com/web-design/30-useful-css-snippets-for-developers'>Code Source</a></p>
+
+<p>大多数CSS开发者知道锚链接类和:hover效果。但是我想引入这小段代码给新手做个参考。这些是一个锚链接和一些其他HTML元素的四个默认状态。把它们留在手边，直到你可以记住一些更复杂的情况。</p>
+
+<h2 id='13_css3_pull'>13. 花式CSS3 Pull-引文</h2>
+
+<pre><code>.has-pullquote:before {
+	/* Reset metrics. */
+	padding: 0;
+	border: none;
+	
+	/* Content */
+	content: attr(data-pullquote);
+	
+	/* Pull out to the right, modular scale based margins. */
+	float: right;
+	width: 320px;
+	margin: 12px -140px 24px 36px;
+	
+	/* Baseline correction */
+	position: relative;
+	top: 5px;
+	
+	/* Typography (30px line-height equals 25% incremental leading) */
+	font-size: 23px;
+	line-height: 30px;
+}
+
+.pullquote-adelle:before {
+	font-family: &quot;adelle-1&quot;, &quot;adelle-2&quot;;
+	font-weight: 100;
+	top: 10px !important;
+}
+
+.pullquote-helvetica:before {
+	font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif;
+	font-weight: bold;
+	top: 7px !important;
+}
+
+.pullquote-facit:before {
+	font-family: &quot;facitweb-1&quot;, &quot;facitweb-2&quot;, Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	top: 7px !important;
+}</code></pre>
+
+<p><a href='http://miekd.com/articles/pull-quotes-with-html5-and-css/'>Code Source</a></p>
+
+<p>Pull-引文(Pull-quotes)与块引用(blockquotes)不同，它们出现在你的博客或者新闻文章的一边。这些引文经常从文章中引用文本，所以它们和块引用显示的稍许不一样。这些默认类具有一些基础的属性，带有3个可供选择的独特的字体类型。</p>
+
+<h2 id='14css3'>14.全屏背景和CSS3</h2>
+
+<pre><code>html { 
+    background: url(&#39;images/bg.jpg&#39;) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}</code></pre>
+
+<p><a href='http://css-tricks.com/perfect-full-page-background-image/'>Code Source</a></p>
+
+<p>我应该标注一下这个代码在不支持CSS3语法的老式浏览器中不会正确的工作。然而如果你是在寻找一个不需要关心遗留系统支持的快速的解决方案，这是你能找到的最好的代码段！给你网站背景增加很大的照片同时又能使它们能在你滚动的时候保持可变尺寸和固定不动。</p>
+
+<h2 id='15_'>15. 垂直居中内容</h2>
+
+<pre><code>.container {
+    min-height: 6.5em;
+    display: table-cell;
+    vertical-align: middle;
+}</code></pre>
+
+<p><a href='http://www.certifiedchinesetranslation.com/openaccess/CSS/center.html'>Code Source</a></p>
+
+<p>使用 margin: 0 auto 技术，很容易就能使内嵌的内容位于你页面的水平正中。然而对垂直的文本要困难的多，尤其是考虑到滚动条和其它的方式。但这个是无需JavaScript就能完美无瑕工作的纯CSS解决方案。</p>
+
+<h2 id='16'>16.强制垂直滚动条</h2>
+
+<pre><code>html { height: 101% }</code></pre>
+
+<p>如果你的页面内容不能填满你的浏览器窗口整个高度，那么你不会焦灼于获取滚动条。但是改变大小将会强制它们出现，并给你的窗口宽度增加额外的10-15像素，推走你的页面内容。这个代码段将保证你的HTML元素总是比浏览器高一点点，强制滚动条一直停留在适当位置。</p>
+
+<h2 id='17_css3'>17. CSS3梯度模板</h2>
+
+<pre><code>#colorbox {
+    background: #629721;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#83b842), to(#629721));
+    background-image: -webkit-linear-gradient(top, #83b842, #629721);
+    background-image: -moz-linear-gradient(top, #83b842, #629721);
+    background-image: -ms-linear-gradient(top, #83b842, #629721);
+    background-image: -o-linear-gradient(top, #83b842, #629721);
+    background-image: linear-gradient(top, #83b842, #629721);
+}</code></pre>
+
+<p>CSS3梯度是新技术参数的另一个奇妙的部分。许多特定前缀难以记忆，所以这个代码片段将能为你每个项目节省一点时间。</p>
+
+<h2 id='18_fontface'>18. @font-face模版</h2>
+
+<pre><code>@font-face {
+    font-family: &#39;MyWebFont&#39;;
+    src: url(&#39;webfont.eot&#39;); /* IE9 Compat Modes */
+    src: url(&#39;webfont.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;), /* IE6-IE8 */
+    url(&#39;webfont.woff&#39;) format(&#39;woff&#39;), /* Modern Browsers */
+    url(&#39;webfont.ttf&#39;)  format(&#39;truetype&#39;), /* Safari, Android, iOS */
+    url(&#39;webfont.svg#svgFontName&#39;) format(&#39;svg&#39;); /* Legacy iOS */
+}
+	
+body {
+    font-family: &#39;MyWebFont&#39;, Arial, sans-serif;
+}</code></pre>
+
+<p><a href='http://css-tricks.com/snippets/css/using-font-face/'>Code Source</a></p>
+
+<p>这是另一些不是很容易记的CSS3代码。使用@font-face你可以给你的网站嵌入自己的TTF/OTF/SVG/WOFF文件，生成自定义的字体类型。为你未来的项目，将这个模版作为一个基本的例子。</p>
+
+<h2 id='19_css3'>19. 完整定义CSS3元素</h2>
+
+<pre><code>p {
+    position:relative;
+    z-index:1;
+    padding: 10px;
+    margin: 10px;
+    font-size: 21px;
+    line-height: 1.3em;
+    color: #fff;
+    background: #ff0030;
+    -webkit-box-shadow: 0 0 0 4px #ff0030, 2px 1px 4px 4px rgba(10,10,0,.5);
+    -moz-box-shadow: 0 0 0 4px #ff0030, 2px 1px 4px 4px rgba(10,10,0,.5);
+    box-shadow: 0 0 0 4px #ff0030, 2px 1px 6px 4px rgba(10,10,0,.5);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+p:before {
+    content: &quot;&quot;;
+    position: absolute;
+    z-index: -1;
+    top: 3px;
+    bottom: 3px;
+    left :3px;
+    right: 3px;
+    border: 2px dashed #fff;
+}
+
+p a {
+    color: #fff;
+    text-decoration:none;
+}
+
+p a:hover, p a:focus, p a:active {
+    text-decoration:underline;
+}</code></pre>
+
+<h2 id='20_css3_'>20. CSS3 斑马条纹</h2>
+
+<pre><code>tbody tr:nth-child(odd) {
+    background-color: #ccc;
+}</code></pre>
+
+<p><a href='http://css-tricks.com/snippets/css/css3-zebra-striping-a-table/'>Code Source</a></p>
+
+<p>这个项目最好的应用是在数据列表上. 为40或50行的表来定义是很费劲的事情. 通过添加上面的CSS3条纹属性可以方便的为奇数行添上背景色.</p>
+
+<h2 id='21_'>21. 字符美化</h2>
+
+<pre><code>.amp {
+    font-family: Baskerville, &#39;Goudy Old Style&#39;, Palatino, &#39;Book Antiqua&#39;, serif;
+    font-style: italic;
+    font-weight: normal;
+}</code></pre>
+
+<p><a href='http://css-tricks.com/snippets/css/fancy-ampersand/'>Code Source</a></p>
+
+<p>这个css类用在页面内容中围绕文字的span元素. 它会将一些典型的serif 字体用斜体形式显示.测试下看看是不是你喜欢的风格吧.</p>
+
+<h2 id='22_'>22. 段落首字母</h2>
+
+<pre><code>p:first-letter{
+    display: block;
+    margin: 5px 0 0 5px;
+    float: left;
+    color: #ff3366;
+    font-size: 5.4em;
+    font-family: Georgia, Times New Roman, serif;
+}</code></pre>
+
+<p>在报纸和图片上你一定看到过它们的首字母的特殊效果. 对于有足够版面的网页或博客来说肯定会受其影响. 上面的CSS规则定义了所有的P标签,你也可以把它们定义为一个class或是ID.</p>
+
+<h2 id='23_css3'>23. CSS3盒子模型内部阴影</h2>
+
+<pre><code>#mydiv { 
+    -moz-box-shadow: inset 2px 0 4px #000;
+    -webkit-box-shadow: inset 2px 0 4px #000;
+    box-shadow: inset 2px 0 4px #000;
+}</code></pre>
+
+<p>阴影为我们的网站提供了巨大的变化. 你几乎可以所有的元素定义这个属性, 看起来都非常不错. 上面的代码定义了内阴影,对设计来说很丑,但在一定的环境下还是很好的.</p>
+
+<h2 id='24_css3'>24. CSS3盒子模型外部阴影</h2>
+
+<pre><code>#mydiv { 
+    -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);
+    -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52);
+}</code></pre>
+
+<p>与CSS3内阴影一样,我也提供一段外阴影的代码. 注意第三个数字表示模糊距离,第四个表示范围. 了解更多从W3Schools.</p>
+
+<h2 id='25_'>25. 三角形列表前缀</h2>
+
+<pre><code>ul {
+    margin: 0.75em 0;
+    padding: 0 1em;
+    list-style: none;
+}
+li:before { 
+    content: &quot;&quot;;
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+}</code></pre>
+
+<p>不管你信不信,反正我是信了.在CSS3中三角形的列表前缀是可能的. 这个看起来太酷了,可惜的是不是所有的浏览器都支持.</p>
+
+<h2 id='26_'>26. 固定宽度的居中布局</h2>
+
+<pre><code>#page-wrap {
+    width: 800px;
+    margin: 0 auto;
+}</code></pre>
+
+<p>我知道之前已经提到过怎样设置水平居中.在这里的代码是完美实现固定宽度的水平居中 .</p>
+
+<h2 id='27_css3_'>27. CSS3 文本分列</h2>
+
+<pre><code>#columns-3 {
+    text-align: justify;
+    -moz-column-count: 3;
+    -moz-column-gap: 12px;
+    -moz-column-rule: 1px solid #c4c8cc;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 12px;
+    -webkit-column-rule: 1px solid #c4c8cc;
+}</code></pre>
+
+<p>CSS3分列在网站上看起来会非常不错, 现实的问题是我们如何把基于文本的内容分列显示. 通过上面的代码,为你的文本段落设置其中的列的数值,文本内容将会按你设定的值分成宽度相同的列.</p>
+
+<h2 id='28_css_'>28. CSS 固定的页脚</h2>
+
+<pre><code>#footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #444;
+}
+
+/* IE 6 */
+* html #footer {
+    position: absolute;
+    top: expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+&#39;px&#39;);
+}</code></pre>
+
+<p>这个实际用起来比听起来要有用的多, 为你的网站添加一个固定页脚是很简单的. 这些页脚不管页面如何滚动都是固定的,你可以包含一些帮助信息或是联系方式等等. 完美的为用户界面增加价值.</p>
+
+<h2 id='29_png__ie6'>29. PNG 图片在 IE6下的透明度</h2>
+
+<pre><code>.bg {
+    width:200px;
+    height:100px;
+    background: url(/folder/yourimage.png) no-repeat;
+    _background:none;
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&#39;/folder/yourimage.png&#39;,sizingMethod=&#39;crop&#39;);
+}
+
+
+/* 1px gif method */
+img, .png {
+    position: relative;
+    behavior: expression((this.runtimeStyle.behavior=&quot;none&quot;)&amp;&amp;(this.pngSet?this.pngSet=true:(this.nodeName == &quot;IMG&quot; &amp;&amp; this.src.toLowerCase().indexOf(&#39;.png&#39;)&gt;-1?(this.runtimeStyle.backgroundImage = &quot;none&quot;,
+       this.runtimeStyle.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&#39;&quot; + this.src + &quot;&#39;, sizingMethod=&#39;image&#39;)&quot;,
+       this.src = &quot;images/transparent.gif&quot;):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace(&#39;url(&quot;&#39;,&#39;&#39;).replace(&#39;&quot;)&#39;,&#39;&#39;),
+       this.runtimeStyle.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&#39;&quot; + this.origBg + &quot;&#39;, sizingMethod=&#39;crop&#39;)&quot;,
+       this.runtimeStyle.backgroundImage = &quot;none&quot;)),this.pngSet=true));
+}</code></pre>
+
+<p>使用透明图片已经变成网站的最基本的实践. 开始的时候是gif图,现在都使用PNG透明图. 不幸的是一些IE老版的浏览器不支持这个透明度属性. 添加上上面的代码就能搞定这个问题.</p>
+
+<h2 id='30_'>30. 跨浏览器的最小高度</h2>
+
+<pre><code>#container {
+    min-height: 550px;
+    height: auto !important;
+    height: 550px;
+}</code></pre>
+
+<p>不得不使用min-height的开发者知道都是那些浏览器支持这个属性. 很多新的游览器都支持这个属性, 然而Internet Explorer 和 老版本的 Firefox对这个支持有问题. 上面的代码能解决这个Bug.</p>
+
+<h2 id='31_css3'>31. CSS3发光输入框</h2>
+
+<pre><code>input[type=text], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #ddd;
+}
+ 
+input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}</code></pre>
+
+<p>我真的喜欢这个基础的自定义CSS3类，这是因为它覆盖默认浏览器行为的方式。我所知道的Chrome &amp; Safar用户对表单里的输入框轮廓很反感。将这些属性加到你的样式表，会给基本的输入框元素设置一个全新的设计。</p>
+
+<h2 id='32_'>32. 基于文件类型的链接样式</h2>
+
+<pre><code>/* external links */
+a[href^=&quot;http://&quot;] {
+    padding-right: 13px;
+    background: url(&#39;external.gif&#39;) no-repeat center right;
+}
+ 
+/* emails */
+a[href^=&quot;mailto:&quot;] {
+    padding-right: 20px;
+    background: url(&#39;email.png&#39;) no-repeat center right;
+}
+ 
+/* pdfs */
+a[href$=&quot;.pdf&quot;] {
+    padding-right: 18px;
+    background: url(&#39;acrobat.png&#39;) no-repeat center right;
+}</code></pre>
+
+<p>相当晦涩的一段CSS代码，但我喜欢它的创造力！你可以决定使用CSS选择器的链接的文件类型，并以图标作为背景图片。这些可以包含不同的协议（HTTP, FTP, IRC, mailto）或简单的只是它们自己的文件类型（mp3, avi, pdf）。</p>
+
+<h2 id='33_'>33. 强制代码包装</h2>
+
+<pre><code>pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}</code></pre>
+
+<p>典型的pre标签是在布局中用来显示大块代码的。这是预编排的文本，就像你在Notepad或Textedit发现的那样，除非你经常看的是引起水平滚动条的一长段文字。这段CSS代码将强制所有pre标签为封装代码格式，不会跑到容器外面去。</p>
+
+<h2 id='34'>34.强制可点击条目上显示手型光标</h2>
+
+<pre><code>a[href], input[type=&#39;submit&#39;], input[type=&#39;image&#39;], label[for], select, button, .pointer {
+    cursor: pointer;
+}</code></pre>
+
+<p>有许多默认的可点击HTML元素并不总是显示手型的指针图标。使用这个CSS选择器设置，你可以对许多关键的元素以及任何使用 .pointer类的其它对象，强制指定指针的形状。</p>
+
+<h2 id='35_'>35. 网页顶端阴影</h2>
+
+<pre><code>body:before {
+    content: &quot;&quot;;
+    position: fixed;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    z-index: 100;
+}</code></pre>
+
+<p>除了一些令人愉悦的美感，开发者可能找不到它会有多大用处。但我确实享受这个效果，而且显然它是独一无二的！只需将这个CSS 代码附加到你的body元素，就能从你的页面顶部往下显示一个渐渐消退的阴影。</p>
+
+<h2 id='36_css3_'>36. CSS3 对话气泡</h2>
+
+<pre><code>.chat-bubble {
+    background-color: #ededed;
+    border: 2px solid #666;
+    font-size: 35px;
+    line-height: 1.3em;
+    margin: 10px auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    font-family: &#39;Bangers&#39;, arial, serif; 
+}
+.chat-bubble-arrow-border {
+    border-color: #666 transparent transparent transparent;
+    border-style: solid;
+    border-width: 20px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: -42px;
+    left: 30px;
+}
+.chat-bubble-arrow {
+    border-color: #ededed transparent transparent transparent;
+    border-style: solid;
+    border-width: 20px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    bottom: -39px;
+    left: 30px;
+}</code></pre>
+
+<p>每当讨论到对话气泡时，无数的用户界面用途就会浮现出来。这些可以用于处理讨论评述，或者创建公告版，或者显示引用文本。只需将下面的类加入你的样式表，你也可以从这贴 CSS3代码片段 找到相关的HTML代码。</p>
+
+<h2 id='37__h1h5_'>37. 默认的 H1-H5 题头</h2>
+
+<pre><code>h1,h2,h3,h4,h5{
+	color: #005a9c;
+}
+h1{
+	font-size: 2.6em;
+	line-height: 2.45em;
+}
+h2{
+	font-size: 2.1em;
+	line-height: 1.9em;
+}
+h3{
+	font-size: 1.8em;
+	line-height: 1.65em;
+}
+h4{
+	font-size: 1.65em;
+	line-height: 1.4em;
+}
+h5{
+	font-size: 1.4em;
+	line-height: 1.25em;
+}</code></pre>
+
+<p>我已经提供了许多常见的语法，包括浏览器CSS重置以及一些HTML元素重置。这个模板包含了所有从H1-H5的主要的题头元素的默认样式。你也许会想增加H6，但我却从未见过有网站使用所有六个嵌套的题头。</p>
+
+<h2 id='38css'>38.纯CSS背景噪声</h2>
+
+<pre><code>body {
+    background-image: url(data:image/png;base64,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);
+    background-color: #0094d0;
+}</code></pre>
+
+<p>设计师已经看到网站中加入这个效果有很长时间了，虽然他们通常是使用具有透明度的重复的瓷砖图像。但是我们可以给CSS嵌入Base64编码来生成全新的图像。在上面代码片段的例子中，是在body背景上产生了一个小小的噪声纹理，你也可以在噪声纹理发生器创建一个自定义的噪声背景。</p>
+
+<h2 id='39_'>39. 继续列表排序</h2>
+
+<pre><code>ol.chapters {
+    list-style: none;
+    margin-left: 0;
+}
+
+ol.chapters &gt; li:before {
+    content: counter(chapter) &quot;. &quot;;
+    counter-increment: chapter;
+    font-weight: bold;
+    float: left;
+    width: 40px;
+}
+
+ol.chapters li {
+    clear: left;
+}
+
+ol.start {
+	counter-reset: chapter;
+}
+
+ol.continue {
+	counter-reset: chapter 11;
+}</code></pre>
+
+<p>我觉得这也许不是特别流行的代码段，但它在开发者中确实具有市场。可能有一种情况，你需要继续一个列表项目，而它却被分割为两个独立的 UL元素。查看上面的代码来找寻一个很好的纯CSS修复方案。</p>
+
+<h2 id='40_css'>40. CSS悬停工具提示</h2>
+
+<pre><code>a { 
+    border-bottom:1px solid #bbb;
+    color:#666;
+    display:inline-block;
+    position:relative;
+    text-decoration:none;
+}
+a:hover,
+a:focus {
+    color:#36c;
+}
+a:active {
+    top:1px; 
+}
+ 
+/* Tooltip styling */
+a[data-tooltip]:after {
+    border-top: 8px solid #222;
+    border-top: 8px solid hsla(0,0%,0%,.85);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    content: &quot;&quot;;
+    display: none;
+    height: 0;
+    width: 0;
+    left: 25%;
+    position: absolute;
+}
+a[data-tooltip]:before {
+    background: #222;
+    background: hsla(0,0%,0%,.85);
+    color: #f6f6f6;
+    content: attr(data-tooltip);
+    display: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    height: 32px;
+    left: 0;
+    line-height: 32px;
+    padding: 0 15px;
+    position: absolute;
+    text-shadow: 0 1px 1px hsla(0,0%,0%,1);
+    white-space: nowrap;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+a[data-tooltip]:hover:after {
+    display: block;
+    top: -9px;
+}
+a[data-tooltip]:hover:before {
+    display: block;
+    top: -41px;
+}
+a[data-tooltip]:active:after {
+    top: -10px;
+}
+a[data-tooltip]:active:before {
+    top: -42px;
+}</code></pre>
+
+<p>有许多开源的基于jQuery的工具提示，你可以在你的网站上实施。但基于CSS的工具提示非常罕见，这个是我非常喜欢的代码段之一。只要复制到你的样式表，并使用新的HTML5数据属性，你就能通过data-tooltip设置工具提示文本。</p>
+
+<h2 id='41_'>41. 暗灰色的圆形按钮</h2>
+
+<pre><code>.graybtn {
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #d1d1d1) );
+    background:-moz-linear-gradient( center top, #ffffff 5%, #d1d1d1 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&#39;#ffffff&#39;, endColorstr=&#39;#d1d1d1&#39;);
+    background-color:#ffffff;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#777777;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
+}
+.graybtn:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #ffffff) );
+    background:-moz-linear-gradient( center top, #d1d1d1 5%, #ffffff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&#39;#d1d1d1&#39;, endColorstr=&#39;#ffffff&#39;);
+    background-color:#d1d1d1;
+}
+.graybtn:active {
+    position:relative;
+    top:1px;
+}</code></pre>
+
+<p>作为又一个对web开发者有帮助的模板，我列入了这个简单的CSS3按钮类。我使用了 .graybtn的类名，显示了相应的颜色，但这不是说你不能改变样式适应你自己的网站。在色轮中查验十六进制数值，以便从不同的颜色范围找到匹配的近似色调。</p>
+
+<h2 id='42urls'>42.在一个打印页面显示URLS</h2>
+
+<pre><code>@media print   {  
+  a:after {  
+    content: &quot; [&quot; attr(href) &quot;] &quot;;  
+  }  
+}</code></pre>
+
+<p>如果你运行一个新闻网站或者管理有许多打印素材的资源，这可能是你能找到的最好的代码段之一了。页面中的锚链接将看上去与普通样子显示一致。但当打印时，你的用户将会看到链接文本具有超链接的URL。这对需要访问你链接的网页，但在特定的打印文档中却看不到URL的人来说，非常方便。</p>
+
+<h2 id='43_webkit'>43. 禁用移动Webkit高亮</h2>
+
+<pre><code>body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}</code></pre>
+
+<p>根据你从事移动方面的经验，这段代码也许不是非常有用。但当用 Safari或其它基于Webkit引擎的浏览器访问移动网站时，你会注意到你一点击它们就会有一个围绕着元素的灰色盒子。只要增加这些样式到你的网站，就可以移除所有原生的移动浏览器的高亮效果。</p>
+
+<h2 id='44_css3_'>44. CSS3 带圆点的图案</h2>
+
+<pre><code>body {
+    background: radial-gradient(circle, white 10%, transparent 10%),
+    radial-gradient(circle, white 10%, black 10%) 50px 50px;
+    background-size: 100px 100px;
+}</code></pre>
+
+<p>最初在线发现这个代码段的时候，我有一点吃惊。但这真的是即兴创建纯CSS3的BG模式的有趣方法。我设置body元素为默认目标，但你可以将它引用到页面中的任何div容器。</p>
+
+<h2 id='45_css3_'>45. CSS3 方格图案</h2>
+
+<pre><code>body {
+    background-color: white;
+    background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+    linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px;
+}</code></pre>
+
+<p>与上面圆点花纹类似，我们也可以创建一个天衣无缝的方格图案。这个方法运行起来需要更多的一点语法，但在所有支持CSS3的浏览器中它看上去完美无缺。同样你也可以改变黑与白的颜色数值，以便匹配你自己网站的配色方案。</p>
+
+<h2 id='46_github_fork_'>46. Github Fork 缎带</h2>
+
+<pre><code>.ribbon {
+    background-color: #a00;
+    overflow: hidden;
+    /* top left corner */
+    position: absolute;
+    left: -3em;
+    top: 2.5em;
+    /* 45 deg ccw rotation */
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    /* shadow */
+    -moz-box-shadow: 0 0 1em #888;
+    -webkit-box-shadow: 0 0 1em #888;
+}
+.ribbon a {
+    border: 1px solid #faa;
+    color: #fff;
+    display: block;
+    font: bold 81.25% &#39;Helvetiva Neue&#39;, Helvetica, Arial, sans-serif;
+    margin: 0.05em 0 0.075em 0;
+    padding: 0.5em 3.5em;
+    text-align: center;
+    text-decoration: none;
+    /* shadow */
+    text-shadow: 0 0 0.5em #444;
+}</code></pre>
+
+<p>作为一个 Github大用户，这段基础代码令我印象深刻。你可以使用CSS3的转换属性，快速的创建Github 角落缎带。对开源插件或Github上有众多追随的代码包来说这非常完美。如果你有一个活跃的Github套件库的话，对托管的HTML/CSS/JS演示来说也很棒。</p>
+
+<h2 id='47__css_'>47. 压缩的 CSS 字体属性</h2>
+
+<pre><code>p {
+  font: italic small-caps bold 1.2em/1.0em Arial, Tahoma, Helvetica;
+}</code></pre>
+
+<p>web开发者不经常使用这个压缩的字体属性的主要原因，在于不是所有设置都是需要的。但对这个速记方法有所理解可以使你在样式表上节省许多时间与空间。在你想要缩短你的字体样式格式的时候，使用这个代码片段。</p>
+
+<h2 id='48_'>48. 页面卷曲效果</h2>
+
+<pre><code>ul.box {
+    position: relative;
+    z-index: 1; /* prevent shadows falling behind containers with backgrounds */
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+}
+
+ul.box li {
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 150px;
+    padding: 0;
+    border: 1px solid #efefef;
+    margin: 0 30px 30px 0;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+}
+
+ul.box li:before,
+ul.box li:after {
+    content: &#39;&#39;;
+    z-index: -1;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+    max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+    max-height: 100px;
+    height: 55%;
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -webkit-transform: skew(-15deg) rotate(-6deg);
+    -moz-transform: skew(-15deg) rotate(-6deg);
+    -ms-transform: skew(-15deg) rotate(-6deg);
+    -o-transform: skew(-15deg) rotate(-6deg);
+    transform: skew(-15deg) rotate(-6deg); 
+}
+
+ul.box li:after {
+    left: auto;
+    right: 10px;
+    -webkit-transform: skew(15deg) rotate(6deg);
+    -moz-transform: skew(15deg) rotate(6deg);
+    -ms-transform: skew(15deg) rotate(6deg);
+    -o-transform: skew(15deg) rotate(6deg);
+    transform: skew(15deg) rotate(6deg); 
+}</code></pre>
+
+<p>这个页面卷曲效果几乎可以应用于任何包含网站内容的容器。我立即会想到图像媒体和引用文本，但这个才能真正做到任何对象。查看这段代码的在线演示页 ，以便对这些页面如何实现卷曲功能有更好的理解。</p>
+
+<h2 id='49'>49.发光锚链接</h2>
+
+<pre><code>a {
+	color: #00e;
+}
+a:visited {
+	color: #551a8b;
+}
+a:hover {
+	color: #06e;
+}
+a:focus {
+	outline: thin dotted;
+}
+a:hover, a:active {
+	outline: 0;
+}
+a, a:visited, a:active {
+	text-decoration: none;
+	color: #fff;
+	-webkit-transition: all .3s ease-in-out;
+}
+a:hover, .glow {
+	color: #ff0;
+	text-shadow: 0 0 10px #ff0;
+}</code></pre>
+
+<p>CSS3 的文本阴影提供了一个独特的网页排版制定方法。更确切的说，这个片段是非常好的制定富有创意的鼠标悬停发光特效的资源。虽然我并不认为这个特效可以毫无失调的融入大多数网站，但如果你有耐心调整它，你一定能够打动访问者。</p>
+
+<h2 id='50__css3_'>50. 饶有特色的 CSS3 展示横条</h2>
+
+<pre><code>.featureBanner {
+    position: relative;
+    margin: 20px
+}
+.featureBanner:before {
+    content: &quot;Featured&quot;;
+    position: absolute;
+    top: 5px;
+    left: -8px;
+    padding-right: 10px;
+    color: #232323;
+    font-weight: bold;
+    height: 0px;
+    border: 15px solid #ffa200;
+    border-right-color: transparent;
+    line-height: 0px;
+    box-shadow: -0px 5px 5px -5px #000;
+    z-index: 1;
+}
+
+.featureBanner:after {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 35px;
+    left: -8px;
+    border: 4px solid #89540c;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}</code></pre>
+
+<p>通常，要在其它浏览器复制这个效果，你需要设置一张背景图片，但在支持 CSS3 的浏览器终，我们可以配置 悬挂在文本封装边缘的动态横条，无需图片！这似乎能够很好的配合电子商务产品、图像缩略图、视频预览、或博客文章，用以列出了一些想法。</p>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://www.atchen.com/silence/">陈韵文</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2013-06-25">2013-06-25</time>
+</span>
+<br />
+
+<span class="categories">
+  in categories
+  
+  <a href="http://www.atchen.com/silence//categories#study" title="study">study</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://www.atchen.com/silence//tags#css" title="css">css</a>&nbsp;
+  
+</span>
+
+</section>
+
+<hr>
+<div class="post_pagination">
+  <ul>
+  
+    <li class="prev"><a href="/silence/2013/06/23/apache-virtualhost" title="Apache Virtualhost">前页</a></li>
+  
+   
+  
+    <li class="next"><a href="/silence/2013/07/24/50-useful-csssnippets" title="50 Useful Csssnippets">后页</a></li>
+  
+  </ul>
+</div>
+<hr>
+
+
+
+  <!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"silence"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = '/silence/2013/06/23/apache-virtualhost';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = '/silence/2013/07/24/50-useful-csssnippets';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2013-2013 by <a href="http://rose1988c.github.com/about">Rose1988c</a> | <span class="label label-info">2013-11-20 16:29:08 CST</span></small></p>
+    </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

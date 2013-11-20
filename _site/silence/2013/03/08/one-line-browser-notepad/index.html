@@ -1,0 +1,19 @@
+<p>title: one-line-browser-notepad date: 2013-02-01 17:05:28 tags: <span>Html5,Code</span></p>
+
+<h2 id='categories_browser'>categories: browser</h2>
+
+<h2 id='introduction'>Introduction</h2>
+
+<p>Sometimes I just need to type garbage. Just to clear out my mind. Using editors to type such gibberish annoys me because it clutters my project workspace (I&#8217;m picky, I know).</p>
+
+<p>So I do this. Since I live in the browser, I just open a new tab and type in the url tab.</p>
+
+<pre><code>data:text/html, &lt;html contenteditable&gt;</code></pre>
+
+<p>Voila, browser notepad.</p>
+
+<h2 id='why_it_works'>Why it works?</h2>
+
+<p>You don&#8217;t need to remember it. It&#8217;s not rocket science. We are using the Data URI&#8217;s format and telling the browser to render an html (try &#8220;javascript:alert(&#8216;Bazinga&#8217;);&#8221;). The content of said html is a simple html line with the html5 attribute contenteditable. This works only on modern browsers that understand this attribute. Click and type!</p>
+
+<p>Reprint: <a href='https://coderwall.com/p/lhsrcq'>https://coderwall.com/p/lhsrcq</a></p>

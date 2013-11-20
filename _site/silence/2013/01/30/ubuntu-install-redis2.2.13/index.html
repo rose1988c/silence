@@ -1,0 +1,46 @@
+<h2 id='1'>1、下载安装</h2>
+
+<pre><code>cd /tmp
+wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz
+tar -zxf redis-2.2.13.tar.gz
+cd redis-2.2.13
+make
+sudo make install</code></pre>
+
+<p>这时Redis 的可执行文件被放到了/usr/local/bin</p>
+<!-- more -->
+<h2 id='2init'>2、下载配置文件和init启动脚本：</h2>
+
+<pre><code>wget https://github.com/ijonas/dotfiles/raw/master/etc/init.d/redis-server
+wget https://github.com/ijonas/dotfiles/raw/master/etc/redis.conf
+sudo mv redis-server /etc/init.d/redis-server
+sudo chmod +x /etc/init.d/redis-server
+sudo mv redis.conf /etc/redis.conf</code></pre>
+
+<h2 id='3'>3、初始化用户和日志路径</h2>
+
+<p>第一次启动Redis前，建议为Redis单独建立一个用户，并新建data和日志文件夹</p>
+
+<pre><code>sudo useradd redis
+sudo mkdir -p /var/lib/redis
+sudo mkdir -p /var/log/redis
+sudo chown redis.redis /var/lib/redis
+sudo chown redis.redis /var/log/redis</code></pre>
+
+<h2 id='4'>4、设置开机自动启动，关机自动关闭</h2>
+
+<pre><code>sudo update-rc.d redis-server defaults</code></pre>
+
+<h2 id='5redis'>5、启动Redis：</h2>
+
+<pre><code>sudo /etc/init.d/redis-server start</code></pre>
+
+<h2 id='6client'>6、启动client客户端连接:</h2>
+
+<pre><code>$ redis-cli
+redis&gt; set bendan wen
+OK
+redis&gt; get bendan
+&quot;wen&quot;</code></pre>
+
+<p>转载<a href='http://www.cnblogs.com/viaivi/archive/2011/12/08/2281319.html'>ubuntu安装启动redis</a></p>

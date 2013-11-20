@@ -1,0 +1,52 @@
+<p>title: wamp 虚拟主机配置 date: 2013-06-23 12:17:54 tags: apache</p>
+
+<h2 id='categories_apache'>categories: apache</h2>
+
+<h2 id='1_apachehttpdconf'>1. 配置apache的配置文件httpd.conf</h2>
+
+<p>寻找节点</p>
+
+<pre><code># Virtual hosts
+#Include conf/extra/httpd-vhosts.conf</code></pre>
+
+<p>有些配置可能是直接写出</p>
+
+<pre><code># Virtual hosts
+&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@dummy-host.example.com
+    DocumentRoot &quot;c:/Apache2/docs/dummy-host.example.com&quot;
+    ServerName dummy-host.example.com
+    ServerAlias www.dummy-host.example.com
+    ErrorLog &quot;logs/dummy-host.example.com-error.log&quot;
+    CustomLog &quot;logs/dummy-host.example.com-access.log&quot; common
+&lt;/VirtualHost&gt;</code></pre>
+
+<p>修改配置<code>conf/extra/httpd-vhosts.conf</code></p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerName www.cyw.com
+    DocumentRoot &quot;D:\workspace\cyw&quot;
+
+    &lt;Directory &quot;D:\workspace\cyw&quot;&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+
+<h2 id='2_host'>2. 配置host文件</h2>
+
+<p>个人推荐写一个bat文件，来快速编辑hosts</p>
+
+<pre><code>notepad &quot;%SystemRoot%\system32\drivers\etc\hosts&quot; 
+ipconfig /flushdns 
+exit</code></pre>
+
+<p>hosts添加需要网站</p>
+
+<pre><code>127.0.0.1    www.cyw.com
+127.0.0.1    cyw.com</code></pre>
+
+<h2 id='3_apache'>3. 重启apache</h2>
+<abbr title='End of file'>EOF</abbr>

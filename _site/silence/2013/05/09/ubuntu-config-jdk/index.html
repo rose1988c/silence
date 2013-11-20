@@ -1,0 +1,50 @@
+<p>title: ubuntu-config-jdk date: 2013-05-09 22:25:54 tags: Ubuntu</p>
+
+<h2 id='categories_ubuntu'>categories: Ubuntu</h2>
+
+<p>到<a href='http://www.oracle.com/technetwork/java/javase/downloads/index.html'>Oracle官网下在JDK</a></p>
+
+<p>下载了最新版jdk-xxx.tar.gz。</p>
+
+<p>把下载的jdk-xxx.tar.gz移到安装目录，我直接放在／usr目录下。</p>
+
+<p>切换到／usr目录</p>
+
+<pre><code>cd /usr</code></pre>
+
+<p>解压jdk :</p>
+
+<pre><code>sudo tar -zxvf jdk-xxx.tar.gz</code></pre>
+
+<p>OK,接下来配置环境变量：</p>
+
+<pre><code>sudo gedit /etc/profile</code></pre>
+
+<p>在/etc/prifile文件后面添加(提示：这里JDK的路径改为你自己的安装路径):</p>
+
+<pre><code>export JAVA_HOME=/usr/jdk-xxx
+export JRE_HOME=/usr/jdk-xxx/jre
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</code></pre>
+
+<p>使刚才修改的/etc/profile文件立刻生效</p>
+
+<pre><code>. /etc/profile</code></pre>
+<!-- more -->
+<p>修改系统默认JDK，并使之立马生效（提示：改为自己的路径哦, 如果要装myeclipse的话这一步是必须得，否则会出错哦）:</p>
+
+<pre><code>sudo update-alternatives --install &quot;/usr/bin/java&quot; &quot;java&quot; &quot;/usr/jdk-xxx/bin/java&quot; 300
+sudo update-alternatives --install &quot;/usr/bin/javac&quot; &quot;javac&quot; &quot;/usr/jdk-xxx/bin/javac&quot; 300
+sudo update-alternatives --install &quot;/usr/bin/javaws&quot; &quot;javaws&quot; &quot;/usr/jdk-xxx/bin/javaws&quot; 300
+sudo update-alternatives --config java
+sudo update-alternatives --config javac
+sudo update-alternatives --config javaws</code></pre>
+
+<p>OK,操作完毕，用<code>java -version</code>查看效果，如果是刚才咱安装的那个<code>JDK</code>，就表示。。。你懂得！</p>
+
+<p>Java运行命令小提示：</p>
+
+<pre><code>java -jar *.jar //运行已经编译的.jar文件
+javac *.java    //编译.java文件
+javaws *.jnlp   //运行.jnlp文件</code></pre>
+<abbr title='End of file'>EOF</abbr>

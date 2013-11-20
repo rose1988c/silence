@@ -1,0 +1,66 @@
+<p>title: PHP 替换字符串函数strtr()和str_repalce()区别 date: 2013-03-15 14:20:34 tags: PHP</p>
+
+<h2 id='categories_php'>categories: PHP</h2>
+
+<h2 id='id59'>定义和用法</h2>
+
+<ul>
+<li>
+<p><code>strtr()</code> 函数转换字符串中特定的字符。</p>
+</li>
+
+<li>
+<p><code>str_replace()</code> 函数使用一个字符串替换字符串中的另一些字符。</p>
+</li>
+</ul>
+
+<p><em>语法</em></p>
+
+<pre><code>strtr(string,from,to) 或者 strtr(string,array)
+
+参数         描述
+string1     必需。规定要转换的字符串。
+from        必需（除非使用数组）。规定要改变的字符。
+to          必需（除非使用数组）。规定要改变为的字符。
+
+array       必需（除非使用 from 和 to）。一个数组，其中的键是原始字符，值是目标字符。
+
+--------------------------------------------------------------------------
+
+str_replace(find,replace,string,count)
+
+find        必需。规定要查找的值。
+replace     必需。规定替换 find 中的值的值。
+string      必需。规定被搜索的字符串。
+count       可选。一个变量，对替换数进行计数</code></pre>
+<!-- more -->
+<h2 id='id60'>区别</h2>
+
+<p>首先你要明白对应关系 - 相互对应的替换</p>
+
+<pre><code>strtr(&quot;aidenliu&quot;,&quot;ai&quot;,&quot;b*cd&quot;) //b*denl*u
+ai
+b*cd</code></pre>
+
+<p>此函数是大小写敏感的,具如果发生多次替换，每一次替换的蓝本都是最原始的那个字符串，而不是在前一次替换的基础上替换，如</p>
+
+<pre><code>strtr(&quot;aidenliu&quot;,&quot;aA&quot;,&quot;A@&quot;)  //会输出Aidenliu 而不是@idenliu</code></pre>
+
+<p><code>strtr(string,array)</code> 为关联数组，用关联数组中的值替换原始字符串中出现的对应的键，如果发生多次替换，每次替换的对像都是最原始的那个字符串，而不是在一次替换的基础上替换（此点与<code>str_replace</code>不同）</p>
+
+<pre><code>$table_change = array(
+                        &#39;=&#39;                   =&gt; &#39;&#39;,
+                        &#39;description&#39;         =&gt; &#39;&#39;,
+                        &#39;content&#39;             =&gt; &#39;&#39;,
+                        &#39;content&#39;             =&gt; &#39;&#39;,
+                        &#39;&quot;&#39;                   =&gt; &#39;&#39;,
+);
+$desc = strtr($m[0][0], $table_change);</code></pre>
+
+<p><code>str_replace</code> 实例:</p>
+
+<pre><code>多对一替换：想把内容字段里所有的&lt;p&gt;&lt;/p&gt;标签清除掉,替换成空 [@str_replace(array(&#39;&lt;p&gt;&#39;,&#39;&lt;/p&gt;&#39;), &#39;&#39;, $Content)]
+
+一对一替换：想把内容字段里所有的&lt;br&gt;标签换成&lt;p&gt; [@str_replace(&#39;&lt;br&gt;&#39;, &#39;&lt;p&gt;&#39;, $Content)]
+
+多对多替换：想把内容字段里的&lt;br&gt;换成&lt;br /&gt;, 同时&lt;p&gt;换&lt;hr&gt;，把&lt;/p&gt;全清除 [@str_replace(array(&#39;&lt;br&gt;&#39;, &#39;&lt;p&gt;&#39;,&#39;&lt;/p&gt;&#39;), array(&#39;&lt;br /&gt;&#39;,&#39;&lt;hr&gt;&#39;,&#39;&#39;), $Content)]</code></pre>

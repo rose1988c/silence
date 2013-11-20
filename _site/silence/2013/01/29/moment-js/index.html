@@ -1,0 +1,39 @@
+<p><a href='http://momentjs.com/'>Moment.js</a> 是一个简单易用的轻量级JavaScript日期处理类库，提供了日期格式化、日期解析等功能。它支持在浏览器和NodeJS两种环境中运行。此类库能够将给定的任意日期转换成多种不同的格式，具有强大的日期计算功能，同时也内置了能显示多样的日期形式的函数。另外，它也支持多种语言，你可以任意新增一种新的语言包。</p>
+
+<blockquote>
+<p>A 5kb javascript date library for parsing, validating, manipulating, and formatting dates.</p>
+</blockquote>
+
+<h2 id='formatting_dates'>Formatting dates</h2>
+
+<pre><code>moment().format(&#39;MMMM Do YYYY, h:mm:ss a&#39;);
+moment().format(&#39;dddd&#39;);
+moment().format(&quot;MMM Do YY&quot;);
+moment().format(&#39;YYYY [escaped] YYYY&#39;);
+moment().format();</code></pre>
+<!-- more -->
+<h2 id='timeago'>Timeago</h2>
+
+<pre><code>moment(&quot;20111031&quot;, &quot;YYYYMMDD&quot;).fromNow();
+moment(&quot;20120620&quot;, &quot;YYYYMMDD&quot;).fromNow();
+moment().startOf(&#39;day&#39;).fromNow();
+moment().endOf(&#39;day&#39;).fromNow();
+moment().startOf(&#39;hour&#39;).fromNow();</code></pre>
+
+<h2 id='calendar_time'>Calendar Time</h2>
+
+<pre><code>moment().subtract(&#39;days&#39;, 10).calendar();
+moment().subtract(&#39;days&#39;, 6).calendar();
+moment().subtract(&#39;days&#39;, 3).calendar();
+moment().subtract(&#39;days&#39;, 1).calendar();
+moment().calendar();
+moment().add(&#39;days&#39;, 1).calendar();
+moment().add(&#39;days&#39;, 3).calendar();
+moment().add(&#39;days&#39;, 10).calendar();</code></pre>
+
+<h2 id='internationalization'>Internationalization</h2>
+
+<pre><code>moment().format(&#39;L&#39;);
+moment().format(&#39;LL&#39;);
+moment().format(&#39;LLL&#39;);
+moment().format(&#39;LLLL&#39;);</code></pre>

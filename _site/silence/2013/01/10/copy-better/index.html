@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="陈韵文" />
+    <title>解除网页限制 | 陈韵文</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="陈韵文" type="application/atom+xml" />
+
+    <link href="/assets/themes/mystyle/bootstrap/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/mystyle/bootstrap/css/highlight.css" rel="stylesheet" type="text/css" media="all">
+    <script type="text/javascript" src="/assets/themes/mystyle/bootstrap/js/jquery-1.7.1.min.js"></script>
+  
+  </head>
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>解除网页限制</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="">Home</a></span>
+        <span><a title="about" class="" href="/about">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories">Categories</a></span>
+        <span><a title="tags" class="" href="/tags">Tags</a></span>
+        <span><a title="links" class="" href="/links">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/atom">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        
+<section class="post">
+<p>复制/粘帖/不能选择/不能使用右键菜单</p>
+<hr />
+<h4 id='id7'>方法一</h4>
+
+<pre><code>(function() {
+eval(function(p, a, c, k, e, r) {
+    e = function(c) {
+        return (c &lt; a ? &#39;&#39; : e(parseInt(c / a))) + ((c = c % a) &gt; 35 ? String.fromCharCode(c + 29) : c.toString(36))
+    };
+    if (!&#39;&#39;.replace(/^/, String)) {
+        while (c--) r[e(c)] = k[c] || e(c);
+        k = [function(e) {
+            return %20r[e]
+        }];
+        e = function() {
+            return &#39;\\w+&#39;
+        };
+        c = 1
+    };
+    while (c--) if (k[c]) p = p.replace(new % 20RegExp(&#39;\\b&#39; + e(c) + &#39;\\b&#39;, &#39;g&#39;), k[c]);
+    return %20p
+}(&#39;5%202=8;5%203=2.K;3.7=3.k=3.e=3.9=3.6=3.y=3.7=3.z=2.7=2.k=2.e=2.9=2.6=4;2.7=2.6=2.c=2.9=p(){r%20t};g(8.n||8){d=4;c=4;6=4}5%20a=8.15(\&#39;*\&#39;);o(5%20i=a.q-1;i&gt;=0;i--){5%20b=a[i];g(b.n||b){d=4;c=4}}s(h(\&#39;%u%v%w%x%j%17%A%B%C%j%D\&#39;)+\&#39;\\E\&#39;+h(\&#39;%F%G%H%I%J%l%L%l%M%N%O%P%Q%R%S%T%U%V%W%X%Y\&#39;)+\&#39;\\Z.10.11\&#39;);3.m.13=\&#39;14!f\&#39;;3.m.16=\&#39;12!f\&#39;;&#39;, 62, 70, &#39;||doc|bd|null|var|oncontextmenu|onselectstart|document|onkeydown|arAllElements|elmOne|onmousedown|onmouseup|onpaste|important|with|unescape||u5236|oncopy|u7528|style|wrappedJSObject|for|function|length|return|alert|true|u5DF2|u89E3|u9664|u590D|onmousemove|ondragstart|u53F3|u952E|u9650|uFF01|u000d|u66F4|u591A|u7CBE|u5F69|u5B9E|body|u5E94|uFF0C|u8BF7|u5173|u6CE8|u300E|u5F02|u6B21|u5143|u8F6F|u4EF6|u4E16|u754C|u300F|u000dwww|iPlaySoft|com|text|webkitUserSelect|auto|getElementsByTagName|MozUserSelect|u4E0E&#39;.split(&#39;|&#39;), 0, {}))
+})();</code></pre>
+
+<h4 id='id8'>方法二</h4>
+
+<pre><code>setTimeout(&quot;document.oncontextmenu=null;document.ondragstart=null;document.onkeydown=null;document.onmousedown=null;document.onmousemove=null;document.onmouseup=null;document.onselectstart=null;document.body.oncontextmenu=null;document.body.ondragstart=null;document.body.onkeydown=null;document.body.onmousedown=null;document.body.onmousemove=null;document.body.onmouseup=null;document.body.onselectstart=null;window.oncontextmenu=null;window.ondragstart=null;window.onkeydown=null;window.onmousedown=null;window.onmousemove=null;window.onmouseup=null;window.onselectstart=null;window.onbeforeprint=null;&quot;,500);</code></pre>
+
+<h4 id='userscripts'>Userscripts</h4>
+
+<p>使用方法:</p>
+
+<p>1.加入书签</p>
+
+<p>2.利用插件</p>
+
+<p><a href='http://userscripts.org/scripts/show/155637'>http://userscripts.org/scripts/show/155637</a></p>
+</section>
+<section class="meta">
+<span class="author">
+  <a href="http://www.atchen.com/silence/">陈韵文</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2013-01-10">2013-01-10</time>
+</span>
+<br />
+
+<span class="categories">
+  in categories
+  
+  <a href="http://www.atchen.com/silence//categories#javascript" title="javascript">javascript</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="http://www.atchen.com/silence//tags#JavaScript" title="JavaScript">JavaScript</a>&nbsp;
+  
+</span>
+
+</section>
+
+<hr>
+<div class="post_pagination">
+  <ul>
+  
+    <li class="prev"><a href="/silence/2013/01/11/github" title="Github 常见问题">前页</a></li>
+  
+   
+  
+    <li class="next"><a href="/silence/2013/01/10/copy-better" title="解除网页限制">后页</a></li>
+  
+  </ul>
+</div>
+<hr>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = '/silence/2013/01/11/github';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = '/silence/2013/01/10/copy-better';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2013-2013 by <a href="http://rose1988c.github.com/about">Rose1988c</a> | <span class="label label-info">2013-11-20 16:29:08 CST</span></small></p>
+    </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
