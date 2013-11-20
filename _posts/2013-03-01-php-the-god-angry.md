@@ -33,7 +33,6 @@ categories: PHP
 
 __PHP__ 
 
-{% codeblock PHP lang:php %}
 
     $word = 'gods';
     if($word == ''){
@@ -62,12 +61,10 @@ __PHP__
             return $pos;
     }
 
-{% endcodeblock %}
 
 
 __python__
 
-{% codeblock Python lang:python %}
     #--coding:utf-8-- 
 
     import sys 
@@ -160,4 +157,3 @@ __python__
         
     f.close
 
-{% endcodeblock %}

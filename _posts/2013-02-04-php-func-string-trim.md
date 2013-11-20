@@ -43,7 +43,6 @@ categories: PHP
 
 用法:
 
-{% codeblock PHP去除字符串中的最后一个字符 lang:php %}
     
     $str="aaaa,bbb,ccc,ddd,eee,";
 
@@ -59,7 +58,6 @@ categories: PHP
     //第四种方法
     echo $str{strlen($str)-1} == ',' ? substr($str, 0, -1) : $str; 
 
-{% endcodeblock %}
 
 
 我觉得使用<code>rtrim()</code>函数还是比较好的,推荐使用！
@@ -79,7 +77,6 @@ categories: PHP
 
 上面出现的函数:
 
-{% codeblock PHP函数的选填参数 lang:php %}
     
     /*
         string  必需。规定要返回其中一部分的字符串。
@@ -107,4 +104,3 @@ categories: PHP
         limit       可选。规定所返回的数组元素的最大数目。
      */
     explode(separator,string,limit)
-{% endcodeblock %}

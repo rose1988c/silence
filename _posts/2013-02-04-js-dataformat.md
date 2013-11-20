@@ -15,7 +15,6 @@ updated: [Moment.js时间类](http://blog.atchen.com/blog/2013/01/29/moment-js/)
 
 <!-- more -->
 
-{% codeblock DataFormat lang:js %}
 
     /** 
      * 此JS文件是格式化JS中日期时间的工具类，其中包含了传入日期对象Date，格式化成想要的格式，<br> 
@@ -303,4 +302,3 @@ updated: [Moment.js时间类](http://blog.atchen.com/blog/2013/01/29/moment-js/)
            }  
         }  
     }  
-{% endcodeblock %}

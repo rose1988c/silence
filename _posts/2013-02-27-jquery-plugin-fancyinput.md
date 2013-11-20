@@ -32,30 +32,24 @@ categories: JavaScript
 
 * Step 1: 
 
-{% codeblock 外部引用 lang:HTML %}
 <link rel="stylesheet" href="fancyInput.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src='fancyInput.js'></script>
-{% endcodeblock %}
 
 * Step 2: HTML
 
-{% codeblock HTML lang:HTML %}
 <div>
     <input type='text' />
 </div>
 <div>
     <textare></textarea>
 </div>
-{% endcodeblock %}
 
 * Step 3: JavaScript
 
-{% codeblock JavaScript lang:HTML %}
 <script>
     $('div :input').fancyInput();
 </script>
-{% endcodeblock %}
 
 
 via: [原文](http://coliss.com/articles/build-websites/operation/javascript/jquery-plugin-fancyinput.html)

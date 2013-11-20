@@ -13,7 +13,6 @@ User Agent中文名为用户代理，简称 UA，它是一个特殊字符串头�
 
 <!-- more -->
 
-{% codeblock Nginx lang:nginx link:detectmobilebrowsers.com/download/nginx %}
 
 set $mobile_rewrite do_not_perform;
 
@@ -30,9 +29,7 @@ if ($mobile_rewrite = perform) {
   break;
 }
 
-{% endcodeblock %}
 
-{% codeblock PHP lang:php link:detectmobilebrowsers.com/download/php %}
 
 <?php
 $useragent=$_SERVER['HTTP_USER_AGENT'];
@@ -40,7 +37,6 @@ if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|c
 header('Location: http://detectmobilebrowser.com/mobile');
 ?>
 
-{% endcodeblock %}
 
 
 ## More

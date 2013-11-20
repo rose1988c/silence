@@ -120,7 +120,6 @@ __自增ID__
 
 我们把分库逻辑都封装在我们的PHP框架里了，开发人员基本上不需要被这些繁琐的事情困扰。下面是使用我们的框架进行照片数据的读写的一些例子:
 
-{% codeblock 照片数据的读写 lang:php %}
 <?php
     $Photos = new ShardedDBTable('Photos', 'yp_photos', 'user_id', array(
                 'photo_id'    => array('type' => 'long', 'primary' => true, 'global_auto_increment' => true),
@@ -145,20 +144,17 @@ __自增ID__
     // 获取ID为1的用户在2010-06-01之后上传的照片
     $photos = $Photos->fetch(array('user_id' => 1, 'posted_date__gt' => '2010-06-01'));
 ?>
-{% endcodeblock %}
 
 首先要定义一个ShardedDBTable对象，所有的API都是通过这个对象开放。第一个参数是对象类型名称， 如果这个名称已经存在，那么将返回之前定义的对象。你也可以通过get_table('Photos')这个函数来获取之前定义的Table对象。 第二个参数是对应的数据库表名，而第三个参数是数据库线索字段，你会发现在后面的所有API中全部需要指定这个字段的值。 第四个参数是字段定义，其中photo_id字段的global_auto_increment属性被置为true，这就是前面所说的全局自增ID， 只要指定了这个属性，框架会处理好ID的事情。
 
 如果我们要访问全局库中的数据，我们需要定义一个DBTable对象。
 
-{% codeblock 定义一个DBTable对象 lang:php %}
 <?php
     $Users = new DBTable('Users', 'yp_users', array(
                 'user_id'  => array('type' => 'long', 'primary' => true, 'auto_increment' => true),
                 'username' => array('type' => 'string'),
             ));
 ?>
-{% endcodeblock %}
 
 DBTable是ShardedDBTable的父类，除了定义时参数有些不同（DBTable不需要指定数据库线索字段），它们提供一样的API。
 
@@ -166,11 +162,9 @@ DBTable是ShardedDBTable的父类，除了定义时参数有些不同（DBTable�
 
 我们的框架提供了缓存功能，对开发人员是透明的。
 
-{% codeblock 缓存 lang:php %}
 <?php
     $photos = $Photos->fetch(array('user_id' => 1, 'posted_date__gt' => '2010-06-01'));
 ?>
-{% endcodeblock %}
 
 我们把这个查询分成两步，第一步先查出符合条件的照片ID，然后再根据照片ID分别查找具体的照片信息。 这么做可以更好的利用缓存。第一个查询的缓存Key为Photos-list-{shard_key}-{md5(查询条件SQL语句)}， Value是照片ID列表（逗号间隔）。其中shard_key为user_id的值1。目前来看，列表缓存也不麻烦。 但是如果用户修改了某张照片的上传时间呢，这个时候缓存中的数据就不一定符合条件了。所以，我们需要一个机制来保证我们不会从缓存中得到过期的列表数据。我们为每张表设置了一个revision，当该表的数据发生变化时（调用insert/update/delete方法）， 我们就更新它的revision，所以我们把列表的缓存Key改为Photos-list-{shard_key}-{md5(查询条件SQL语句)}-{revision}， 这样我们就不会再得到过期列表了。
 
@@ -178,7 +172,6 @@ revision信息也是存放在缓存里的，Key为Photos-revision。这样做看
 
 因为全局库没有shard_key，所以修改了全局库中的表的一行数据，还是会导致整个表的缓存失效。 但是大部分情况下，数据都是有区域范围的，比如我们的帮助论坛的主题帖子， 帖子属于主题。修改了其中一个主题的一个帖子，没必要使所有主题的帖子缓存都失效。 所以我们在DBTable上增加了一个叫isolate_key的属性。
 
-{% codeblock DBTable lang:php %}
 <?php
 $GLOBALS['Posts'] = new DBTable('Posts', 'yp_posts', array(
         'topic_id'    => array('type' => 'long', 'primary' => true),
@@ -190,7 +183,6 @@ $GLOBALS['Posts'] = new DBTable('Posts', 'yp_posts', array(
         'modified_by' => array('type' => 'long'),
     ), 'topic_id');
 ?>
-{% endcodeblock %}
 
 注意构造函数的最后一个参数topic_id就是指以字段topic_id作为isolate_key，它的作用和shard_key一样用于隔离revision的作用范围。
 
@@ -208,7 +200,6 @@ ShardedDBTable继承自DBTable，所以也可以指定isolate_key。 ShardedDBTa
 ## 个人Demo
 
 
-{% codeblock create database lang:sql %}
 
     set names utf8;
 
@@ -353,7 +344,6 @@ ShardedDBTable继承自DBTable，所以也可以指定isolate_key。 ShardedDBTa
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
-{% endcodeblock %}
 
 
 

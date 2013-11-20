@@ -17,7 +17,6 @@ categories: PHP
 
 ## 数组方法
 
-{% codeblock PHP - 约瑟夫环 lang:php %}
 
 <?php
     //定义函数
@@ -43,7 +42,6 @@ categories: PHP
     get_josephus($totals , $m);     //调用函数
 ？>
 
-{% endcodeblock %}
 
 ## 数学方法
 
@@ -52,15 +50,12 @@ categories: PHP
 
 这里使用一个数学递推公式:
 
-{% codeblock 递推公式 lang:php %}
     f[i] = 0　　                  i = 1
 
     f[i] = (f[i-1] + m) % i 　　  i >= 2
-{% endcodeblock %}
 
 解决方法:
 
-{% codeblock PHP - 约瑟夫环 lang:php %}
 
      function get_josephus($n, $m) {        //$n为总数,$m为剔除步长
          $s = 0;                            //$s为success坐标,只有一只时,success坐标为0
@@ -72,4 +67,3 @@ categories: PHP
      
      echo get_josephus(13, 34);
 
-{% endcodeblock %}

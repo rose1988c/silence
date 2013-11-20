@@ -10,13 +10,10 @@ categories: JavaScript
 
 * Step 1: 
 
-{% codeblock 外部引用 lang:HTML %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-{% endcodeblock %}
 
 * Step 2: HTML
 
-{% codeblock HTML lang:HTML %}
 <a href="javascript:void();" name="wantgo">想去wantgo的地方 - javascript:void();</a>
 
 <a href="#wantgo" name="wantgo">想去wantgo的地方 - #wantgo</a>
@@ -24,13 +21,11 @@ categories: JavaScript
 <div id="wantgo" >
     I want go sky.
 </div>
-{% endcodeblock %}
 
 <!-- more -->
 
 * Step 3: JavaScript
 
-{% codeblock JavaScript lang:HTML %}
 <script type="text/javascript">
     $(function() {
 
@@ -68,7 +63,6 @@ categories: JavaScript
 
     });
 </script>
-{% endcodeblock %}
 
 
 
